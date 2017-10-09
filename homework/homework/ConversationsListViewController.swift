@@ -52,8 +52,10 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
             cell.backgroundColor = .white
         }
         
-        cell.name.text = onlineAndHistorySectionMassive[indexPath.section][indexPath.row].name!
-     
+        
+        if let notOptionalName =  onlineAndHistorySectionMassive[indexPath.section][indexPath.row].name {
+            cell.name.text = notOptionalName
+        }
    
         return cell
     }
