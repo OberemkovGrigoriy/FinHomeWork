@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB0C43F71F8E2AE300EC0FB7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0C43F61F8E2AE300EC0FB7 /* ProfileViewController.swift */; };
 		BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */; };
 		BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */; };
 		BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB0C43F61F8E2AE300EC0FB7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				BBA9AD711F77C8DC009F8FF0 /* AppDelegate.swift */,
 				BBA9AD731F77C8DC009F8FF0 /* ViewController.swift */,
 				BBA9AD751F77C8DC009F8FF0 /* Main.storyboard */,
+				BB0C43F61F8E2AE300EC0FB7 /* ProfileViewController.swift */,
 				BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */,
 				BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */,
 				BBA9AD781F77C8DC009F8FF0 /* Assets.xcassets */,
@@ -161,6 +164,7 @@
 				BBA9AD741F77C8DC009F8FF0 /* ViewController.swift in Sources */,
 				BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */,
 				BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */,
+				BB0C43F71F8E2AE300EC0FB7 /* ProfileViewController.swift in Sources */,
 				BBA9AD721F77C8DC009F8FF0 /* AppDelegate.swift in Sources */,
 				BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */,
 			);

@@ -8,33 +8,29 @@
 
 import UIKit
 
-let array: [String] = ["1", "303303303303303303303303303", "303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303", "1", "303303303303303303303303303", "303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303"]
+let arrayDataToCellMessageInDialog: [String] = ["1", "303303303303303303303303303", "303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303", "1", "303303303303303303303303303", "303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303303"]
 
 class DialogueViewController: UIViewController, UITableViewDataSource  {
     
     @IBOutlet weak var mesTable: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return arrayDataToCellMessageInDialog.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         if(indexPath.row%2==0){
             let cell = tableView.dequeueReusableCell(withIdentifier: "first", for: indexPath) as? MessageTableViewCell
-            cell?.messageTextFromMassive = array[indexPath.row]
-            cell?.message.backgroundColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
-            cell?.message.layer.masksToBounds = true
-            cell?.message.layer.cornerRadius = 3
-            
+            cell?.configurate(cellData: arrayDataToCellMessageInDialog[indexPath.row])
+
             return cell!
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "second", for: indexPath) as? MessageTableViewCell
-            cell?.messageTextFromMassive = array[indexPath.row]
-            cell?.message.backgroundColor = UIColor(red: 102/255, green: 255/255, blue: 102/255, alpha: 1)
-            cell?.message.layer.masksToBounds = true
-            cell?.message.layer.cornerRadius = 3
+            
+            cell?.configurate(cellData: arrayDataToCellMessageInDialog[indexPath.row])
+      
             return cell!
         }
 
