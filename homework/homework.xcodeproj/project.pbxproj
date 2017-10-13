@@ -12,7 +12,7 @@
 		BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */; };
 		BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */; };
 		BB16902D1F8A6D7400E5E227 /* StructDataOfButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902C1F8A6D7400E5E227 /* StructDataOfButton.swift */; };
-		BB16902F1F8A6DCA00E5E227 /* loadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902E1F8A6DCA00E5E227 /* loadData.swift */; };
+		BB16902F1F8A6DCA00E5E227 /* convertStringToData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902E1F8A6DCA00E5E227 /* convertStringToData.swift */; };
 		BB16903C1F8AA97D00E5E227 /* DialogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */; };
 		BBA9AD721F77C8DC009F8FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9AD711F77C8DC009F8FF0 /* AppDelegate.swift */; };
 		BBA9AD741F77C8DC009F8FF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9AD731F77C8DC009F8FF0 /* ViewController.swift */; };
@@ -27,7 +27,7 @@
 		BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BB16902C1F8A6D7400E5E227 /* StructDataOfButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructDataOfButton.swift; sourceTree = "<group>"; };
-		BB16902E1F8A6DCA00E5E227 /* loadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadData.swift; sourceTree = "<group>"; };
+		BB16902E1F8A6DCA00E5E227 /* convertStringToData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = convertStringToData.swift; sourceTree = "<group>"; };
 		BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueViewController.swift; sourceTree = "<group>"; };
 		BBA9AD6E1F77C8DC009F8FF0 /* homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA9AD711F77C8DC009F8FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 			children = (
 				BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */,
 				BB16902C1F8A6D7400E5E227 /* StructDataOfButton.swift */,
-				BB16902E1F8A6DCA00E5E227 /* loadData.swift */,
+				BB16902E1F8A6DCA00E5E227 /* convertStringToData.swift */,
 				BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */,
 				BBA9AD711F77C8DC009F8FF0 /* AppDelegate.swift */,
 				BBA9AD731F77C8DC009F8FF0 /* ViewController.swift */,
@@ -160,7 +160,7 @@
 			files = (
 				BB16903C1F8AA97D00E5E227 /* DialogueViewController.swift in Sources */,
 				BB16902D1F8A6D7400E5E227 /* StructDataOfButton.swift in Sources */,
-				BB16902F1F8A6DCA00E5E227 /* loadData.swift in Sources */,
+				BB16902F1F8A6DCA00E5E227 /* convertStringToData.swift in Sources */,
 				BBA9AD741F77C8DC009F8FF0 /* ViewController.swift in Sources */,
 				BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */,
 				BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */,

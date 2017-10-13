@@ -35,6 +35,7 @@ class DialogueViewController: UIViewController, UITableViewDataSource  {
         }
 
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
