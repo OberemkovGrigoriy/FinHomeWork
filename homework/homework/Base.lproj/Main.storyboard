@@ -237,26 +237,73 @@
                                     <constraint firstItem="Fuo-sC-E8E" firstAttribute="top" secondItem="x2s-Zb-TMU" secondAttribute="top" constant="8" id="mXr-QB-d0Z"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLW-hA-Jsv">
-                                <rect key="frame" x="36" y="617" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBf-Hj-uUu">
-                                <rect key="frame" x="293" y="617" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="188" y="596" width="171" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wPh-or-ilo"/>
+                                </constraints>
+                                <state key="normal" title=" Operation ">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Имя:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaR-p0-JaF">
+                                <rect key="frame" x="16" y="447" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O2C-R6-YoL">
+                                <rect key="frame" x="16" y="473" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="О себе:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLJ-X2-zHv">
+                                <rect key="frame" x="16" y="513" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XLP-UY-3z2">
+                                <rect key="frame" x="16" y="539" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLW-hA-Jsv">
+                                <rect key="frame" x="16" y="596" width="171" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="sPh-pv-KrV"/>
+                                </constraints>
+                                <state key="normal" title="       GCD         ">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fLW-hA-Jsv" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leadingMargin" constant="20" id="Eqa-sK-WgL"/>
-                            <constraint firstItem="CBf-Hj-uUu" firstAttribute="leading" secondItem="fLW-hA-Jsv" secondAttribute="trailing" constant="211" id="GWg-Gd-i1x"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="CBf-Hj-uUu" secondAttribute="trailing" constant="20" id="Ij9-YI-EPU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XLP-UY-3z2" secondAttribute="trailing" id="1bH-7J-jgR"/>
+                            <constraint firstItem="nLJ-X2-zHv" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leadingMargin" id="2LM-0i-C70"/>
+                            <constraint firstItem="XLP-UY-3z2" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leadingMargin" id="8kp-DB-tMT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="O2C-R6-YoL" secondAttribute="trailing" id="AHu-lE-eJi"/>
+                            <constraint firstItem="O2C-R6-YoL" firstAttribute="top" secondItem="WaR-p0-JaF" secondAttribute="bottom" constant="5" id="AKS-HY-ef3"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="WaR-p0-JaF" secondAttribute="trailing" constant="100" id="EOV-uB-UOc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CBf-Hj-uUu" secondAttribute="trailing" id="Hpx-qe-Kq7"/>
+                            <constraint firstItem="XLP-UY-3z2" firstAttribute="top" secondItem="nLJ-X2-zHv" secondAttribute="bottom" constant="5" id="I2T-Lz-ylz"/>
+                            <constraint firstItem="fLW-hA-Jsv" firstAttribute="top" secondItem="XLP-UY-3z2" secondAttribute="bottom" constant="27" id="J44-E2-a6h"/>
                             <constraint firstAttribute="trailing" secondItem="x2s-Zb-TMU" secondAttribute="trailing" id="Ksw-M9-uhh"/>
+                            <constraint firstItem="fLW-hA-Jsv" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leadingMargin" id="RG8-8c-TIg"/>
+                            <constraint firstItem="WaR-p0-JaF" firstAttribute="top" secondItem="x2s-Zb-TMU" secondAttribute="bottom" id="U6z-EU-fjx"/>
                             <constraint firstItem="x2s-Zb-TMU" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leading" id="XIe-Ua-iB2"/>
                             <constraint firstItem="x2s-Zb-TMU" firstAttribute="top" secondItem="r3p-D1-d67" secondAttribute="bottom" constant="8" id="XSa-Gf-dtT"/>
-                            <constraint firstItem="kQO-Tk-2Wc" firstAttribute="top" secondItem="CBf-Hj-uUu" secondAttribute="bottom" constant="20" id="Zo1-zv-fga"/>
-                            <constraint firstItem="CBf-Hj-uUu" firstAttribute="leading" secondItem="fLW-hA-Jsv" secondAttribute="trailing" constant="211" id="nsc-KM-OhZ"/>
-                            <constraint firstItem="kQO-Tk-2Wc" firstAttribute="top" secondItem="fLW-hA-Jsv" secondAttribute="bottom" constant="20" id="uNX-rG-LWO"/>
+                            <constraint firstItem="WaR-p0-JaF" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leadingMargin" id="XcM-Ku-XXG"/>
+                            <constraint firstItem="CBf-Hj-uUu" firstAttribute="top" secondItem="XLP-UY-3z2" secondAttribute="bottom" constant="27" id="ZrR-iL-Mo6"/>
+                            <constraint firstItem="nLJ-X2-zHv" firstAttribute="top" secondItem="O2C-R6-YoL" secondAttribute="bottom" constant="10" id="cLR-l7-Zcu"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="nLJ-X2-zHv" secondAttribute="trailing" constant="100" id="hPV-xR-nKi"/>
+                            <constraint firstItem="O2C-R6-YoL" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leadingMargin" id="mD9-2D-WLl"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="XLP-UY-3z2" secondAttribute="trailing" id="rYp-3O-uND"/>
+                            <constraint firstItem="CBf-Hj-uUu" firstAttribute="leading" secondItem="fLW-hA-Jsv" secondAttribute="trailing" constant="1" id="toh-JA-n1t"/>
+                            <constraint firstItem="fLW-hA-Jsv" firstAttribute="width" secondItem="CBf-Hj-uUu" secondAttribute="width" id="ywI-Cg-wzw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Yxp-Q3-hLd">
@@ -272,6 +319,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="GCDbutton" destination="fLW-hA-Jsv" id="1CM-R4-FbW"/>
+                        <outlet property="operationButton" destination="CBf-Hj-uUu" id="atJ-z8-dFO"/>
                         <outlet property="photoButton" destination="8Uo-F5-bEr" id="AI5-ZM-61C"/>
                         <outlet property="profileImage" destination="Fuo-sC-E8E" id="pta-kQ-zWO"/>
                     </connections>

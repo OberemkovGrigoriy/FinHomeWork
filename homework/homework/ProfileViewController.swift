@@ -16,8 +16,10 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         self.dismiss(animated: true, completion: {})
     }
     
+    @IBOutlet weak var GCDbutton: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var photoButton: UIButton!
+    @IBOutlet weak var operationButton: UIButton!
     
     @IBAction func tapPhotoButton(_ sender: Any) {
         print("Выбери изображение профиля")
@@ -54,6 +56,10 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         photoButton.layer.cornerRadius = photoButton.frame.size.height / 2
         profileImage.clipsToBounds = true
         profileImage.layer.cornerRadius = photoButton.frame.size.height / 2
+        GCDbutton.layer.cornerRadius = 9
+        GCDbutton.layer.borderWidth = 1.0
+        operationButton.layer.cornerRadius = 9
+        operationButton.layer.borderWidth = 1.0
         // Do any additional setup after loading the view.
     }
 
