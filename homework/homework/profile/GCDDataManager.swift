@@ -11,7 +11,7 @@ import UIKit
 
 class GCDDataManager{
     func save(dataToSave: ProfileDataToSave, closure: @escaping ()->()){
-        let queueToSaveData = DispatchQueue.global(qos: .utility)
+        let queueToSaveData = DispatchQueue.global(qos: .userInitiated)
         queueToSaveData.async {
             let savedData = NSKeyedArchiver.archivedData(withRootObject: dataToSave)
             let defaults = UserDefaults.standard
@@ -22,9 +22,10 @@ class GCDDataManager{
         }
         
     }
-    func load(closure: @escaping (ProfileDataToSave?)->()){
+    
+    func load(closure: @escaping (ProfileDataToSave?)->())->(){
         let defaults = UserDefaults.standard
-        let queueToLoadData = DispatchQueue.global(qos: .utility)
+        let queueToLoadData = DispatchQueue.global(qos: .userInitiated)
         queueToLoadData.async{
             var user: ProfileDataToSave? = nil
             if let savedData = defaults.object(forKey: "userSaveData"){
@@ -34,6 +35,22 @@ class GCDDataManager{
                 closure(user)
             }
         }
-        
     }
+//    
+//    func loadInformationList( loadinfo: ProfileDataToSave?)->(){
+//        var loadinfo = loadinfo
+//        let defaults = UserDefaults.standard
+//        let queueToLoadData = DispatchQueue.global(qos: .userInitiated)
+//         var user: ProfileDataToSave? = nil
+//        queueToLoadData.async{
+//            if let savedData = defaults.object(forKey: "userSaveData"){
+//                user = NSKeyedUnarchiver.unarchiveObject(with: savedData as! Data) as? ProfileDataToSave
+//                DispatchQueue.main.async {
+//                    loadinfo = user
+//                }
+//            }
+//        }
+//    }
+    
+    
 }

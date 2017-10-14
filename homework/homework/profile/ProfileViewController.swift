@@ -56,6 +56,9 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
     
     @IBOutlet weak var nameProfileField: UITextField!
     @IBOutlet weak var AboutProfileField: UITextField!
+    var checkName: String? = ""
+    var checkAbout: String? = ""
+    var checkImage: UIImage? = nil
     
     
     override func viewDidLoad() {
@@ -69,6 +72,9 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         operationButton.layer.cornerRadius = 9
         operationButton.layer.borderWidth = 1.0
         activityIndicator.hidesWhenStopped = true
+        
+        
+
         // Do any additional setup after loading the view.
     }
 
@@ -95,8 +101,11 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
             self.AboutProfileField.text = data.profileAbout
             self.nameProfileField.text = data.profileName
             
+            checkName = data.profileName
+            checkAbout = data.profileAbout
+            checkImage = data.profileImage
+            
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -116,17 +125,36 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         picker.dismiss(animated: true, completion: nil)
     }
 
+//    func getInfo(user:ProfileDataToSave?)->(ProfileDataToSave?){
+//        let info:ProfileDataToSave = ProfileDataToSave(profileName: "", profileAbout: "", profileImage: nil)
+//        
+//        if let data = user{
+//            info.profileImage = data.profileImage
+//            info.profileAbout = data.profileAbout
+//            info.profileName = data.profileName
+//        }
+//        
+//        return info
+//    }
+
     @IBAction func GCDButtonTap(_ sender: Any) {
-        save = true
+        if(checkName == self.nameProfileField.text && checkImage! == self.profileImage.image && checkAbout == self.AboutProfileField.text){
+            return
+        }
+        else{
+            save = true
         let ourProfileObject = ProfileDataToSave(profileName: nameProfileField.text, profileAbout: AboutProfileField.text, profileImage: profileImage.image)
         gcdDataManager.save(dataToSave: ourProfileObject, closure: {
             self.saveClosure()
         })
         print("!!!!!!!!!!!!!!SAVE!!!!!!!!!!!!!!!!!!!!!!!!")
+        }
     }
     
     func saveClosure(){
         self.save = false
+        gcdDataManager.load(closure: self.setInfo)
+
         let alert = UIAlertController(title: "Сохранение успешно", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
             // perhaps use action.title here
