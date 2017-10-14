@@ -225,6 +225,13 @@
                                             <action selector="tapPhotoButton:" destination="cHU-DU-OA0" eventType="touchUpInside" id="I9j-JL-ivm"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="i8I-dN-yPO">
+                                        <rect key="frame" x="162" y="162" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ZmA-La-Oq2"/>
+                                            <constraint firstAttribute="width" constant="50" id="qUk-Fz-GYf"/>
+                                        </constraints>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -233,8 +240,10 @@
                                     <constraint firstAttribute="bottom" secondItem="Fuo-sC-E8E" secondAttribute="bottom" constant="8" id="9AZ-bK-3Sr"/>
                                     <constraint firstAttribute="bottom" secondItem="8Uo-F5-bEr" secondAttribute="bottom" constant="8" id="H0n-ph-bGv"/>
                                     <constraint firstItem="Fuo-sC-E8E" firstAttribute="leading" secondItem="x2s-Zb-TMU" secondAttribute="leading" constant="8" id="JOf-G7-cH4"/>
+                                    <constraint firstItem="i8I-dN-yPO" firstAttribute="centerY" secondItem="x2s-Zb-TMU" secondAttribute="centerY" id="dpW-2R-Ljc"/>
                                     <constraint firstAttribute="trailing" secondItem="8Uo-F5-bEr" secondAttribute="trailing" constant="8" id="eMn-UE-uDG"/>
                                     <constraint firstItem="Fuo-sC-E8E" firstAttribute="top" secondItem="x2s-Zb-TMU" secondAttribute="top" constant="8" id="mXr-QB-d0Z"/>
+                                    <constraint firstItem="i8I-dN-yPO" firstAttribute="centerX" secondItem="x2s-Zb-TMU" secondAttribute="centerX" id="prd-3C-Si1"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBf-Hj-uUu">
@@ -245,6 +254,9 @@
                                 <state key="normal" title=" Operation ">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="operationButtonTap:" destination="cHU-DU-OA0" eventType="touchUpInside" id="RTX-yZ-sfZ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Имя:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaR-p0-JaF">
                                 <rect key="frame" x="16" y="447" width="39" height="21"/>
@@ -278,6 +290,9 @@
                                 <state key="normal" title="       GCD         ">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="GCDButtonTap:" destination="cHU-DU-OA0" eventType="touchUpInside" id="lX6-45-N7s"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -319,7 +334,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="AboutProfileField" destination="XLP-UY-3z2" id="1ET-pY-AcI"/>
                         <outlet property="GCDbutton" destination="fLW-hA-Jsv" id="1CM-R4-FbW"/>
+                        <outlet property="activityIndicator" destination="i8I-dN-yPO" id="SuZ-XT-Gc3"/>
+                        <outlet property="nameProfileField" destination="O2C-R6-YoL" id="Rpc-mS-ygW"/>
                         <outlet property="operationButton" destination="CBf-Hj-uUu" id="atJ-z8-dFO"/>
                         <outlet property="photoButton" destination="8Uo-F5-bEr" id="AI5-ZM-61C"/>
                         <outlet property="profileImage" destination="Fuo-sC-E8E" id="pta-kQ-zWO"/>
@@ -327,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hA-u4-Z9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2320.8000000000002" y="667.91604197901052"/>
+            <point key="canvasLocation" x="2320.5" y="667.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PNU-4Q-Vrq">

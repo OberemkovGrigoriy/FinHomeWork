@@ -1,0 +1,36 @@
+
+/* Class = "UIButton"; normalTitle = "Profile"; ObjectID = "BgU-Jm-d3W"; */
+"BgU-Jm-d3W.normalTitle" = "Profile";
+
+/* Class = "UIButton"; normalTitle = " Operation "; ObjectID = "CBf-Hj-uUu"; */
+"CBf-Hj-uUu.normalTitle" = " Operation ";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FRU-iX-GzA"; */
+"FRU-iX-GzA.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Tinkoff Chat"; ObjectID = "JH2-2h-y6f"; */
+"JH2-2h-y6f.title" = "Tinkoff Chat";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "Pt3-Te-hKz"; */
+"Pt3-Te-hKz.text" = "Date";
+
+/* Class = "UILabel"; text = "Имя:"; ObjectID = "WaR-p0-JaF"; */
+"WaR-p0-JaF.text" = "Имя:";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "cDb-bl-Hpz"; */
+"cDb-bl-Hpz.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "       GCD         "; ObjectID = "fLW-hA-Jsv"; */
+"fLW-hA-Jsv.normalTitle" = "       GCD         ";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lPM-J3-f23"; */
+"lPM-J3-f23.text" = "Label";
+
+/* Class = "UILabel"; text = "О себе:"; ObjectID = "nLJ-X2-zHv"; */
+"nLJ-X2-zHv.text" = "О себе:";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "pe9-2A-nyJ"; */
+"pe9-2A-nyJ.text" = "Name";
+
+/* Class = "UILabel"; text = "message"; ObjectID = "v4J-Ga-Iyv"; */
+"v4J-Ga-Iyv.text" = "message";

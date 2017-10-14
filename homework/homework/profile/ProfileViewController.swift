@@ -12,10 +12,13 @@ import Foundation
 
 class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    let gcdDataManager: GCDDataManager = GCDDataManager()
+    
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: {})
     }
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var GCDbutton: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var photoButton: UIButton!
@@ -51,8 +54,13 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         self.present(actionSheet, animated: true, completion: nil)
     }
     
+    @IBOutlet weak var nameProfileField: UITextField!
+    @IBOutlet weak var AboutProfileField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        gcdDataManager.load(closure: self.setInfo)
         photoButton.layer.cornerRadius = photoButton.frame.size.height / 2
         profileImage.clipsToBounds = true
         profileImage.layer.cornerRadius = photoButton.frame.size.height / 2
@@ -60,26 +68,44 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         GCDbutton.layer.borderWidth = 1.0
         operationButton.layer.cornerRadius = 9
         operationButton.layer.borderWidth = 1.0
+        activityIndicator.hidesWhenStopped = true
         // Do any additional setup after loading the view.
     }
 
+    
+    var save: Bool  = false{
+        didSet{
+            if(save){
+                activityIndicator.startAnimating()
+                GCDbutton.isEnabled = false
+                operationButton.isEnabled = false
+            }
+            else{
+                activityIndicator.stopAnimating()
+                GCDbutton.isEnabled = true
+                operationButton.isEnabled = true
+            }
+        }
+    }
+    
+    
+    func setInfo(user:ProfileDataToSave?){
+        if let data = user{
+            self.profileImage.image = data.profileImage
+            self.AboutProfileField.text = data.profileAbout
+            self.nameProfileField.text = data.profileName
+            
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         profileImage.image = image
         
@@ -90,4 +116,26 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         picker.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func GCDButtonTap(_ sender: Any) {
+        save = true
+        let ourProfileObject = ProfileDataToSave(profileName: nameProfileField.text, profileAbout: AboutProfileField.text, profileImage: profileImage.image)
+        gcdDataManager.save(dataToSave: ourProfileObject, closure: {
+            self.saveClosure()
+        })
+        print("!!!!!!!!!!!!!!SAVE!!!!!!!!!!!!!!!!!!!!!!!!")
+    }
+    
+    func saveClosure(){
+        self.save = false
+        let alert = UIAlertController(title: "Сохранение успешно", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+            // perhaps use action.title here
+        })
+        self.present(alert, animated: true)
+    }
+    @IBAction func operationButtonTap(_ sender: Any) {
+        save = true
+        save = false
+    }
+    
 }
