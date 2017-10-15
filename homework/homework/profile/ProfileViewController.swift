@@ -61,6 +61,13 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
     var checkImage: UIImage? = nil
     
     
+    @IBAction func nameChange(_ sender: Any) {
+        GCDbutton.isEnabled = true
+    }
+    
+    @IBAction func aboutChange(_ sender: Any) {
+        GCDbutton.isEnabled = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         gcdDataManager.load(closure: self.setInfo)
@@ -72,9 +79,7 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         operationButton.layer.cornerRadius = 9
         operationButton.layer.borderWidth = 1.0
         activityIndicator.hidesWhenStopped = true
-        
-        
-
+        GCDbutton.isEnabled = false
         // Do any additional setup after loading the view.
     }
 
@@ -117,7 +122,7 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         profileImage.image = image
-        
+        GCDbutton.isEnabled = true
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -147,19 +152,37 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         gcdDataManager.save(dataToSave: ourProfileObject, closure: {
             self.saveClosure()
         })
-        print("!!!!!!!!!!!!!!SAVE!!!!!!!!!!!!!!!!!!!!!!!!")
+       
         }
     }
     
     func saveClosure(){
         self.save = false
         gcdDataManager.load(closure: self.setInfo)
-
+        
+        if(self.nameProfileField.text == nil || self.profileImage.image == nil || self.AboutProfileField.text == nil){
+            let refreshAlert = UIAlertController(title: "Ошибка", message: "Не удалось сохранить данные", preferredStyle: UIAlertControllerStyle.alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "ОК", style: .default, handler: { (action: UIAlertAction!) in
+            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (action: UIAlertAction!) in
+                self.save = true
+                let ourProfileObject = ProfileDataToSave(profileName: self.nameProfileField.text, profileAbout: self.AboutProfileField.text, profileImage: self.profileImage.image)
+                self.gcdDataManager.save(dataToSave: ourProfileObject, closure: {
+                    self.saveClosure()
+                })
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
+        }else{
         let alert = UIAlertController(title: "Сохранение успешно", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
             // perhaps use action.title here
         })
         self.present(alert, animated: true)
+        GCDbutton.isEnabled = false
+        }
     }
     @IBAction func operationButtonTap(_ sender: Any) {
         save = true
