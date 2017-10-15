@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 
 
-class OperationDataManager{
-    func save(object: ProfileDataToSave,closure: @escaping ()->()){
+class OperationDataManager: DataManagerMustSave{
+    
+    func save(dataToSave: ProfileDataToSave,closure: @escaping ()->()){
         let queue = OperationQueue()
-        let op = myOperationSave(object: object,closure: closure)
+        let op = myOperationSave(object: dataToSave, closure: closure)
         queue.addOperation(op)
     }
     

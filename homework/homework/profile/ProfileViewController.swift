@@ -178,9 +178,13 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
             refreshAlert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (action: UIAlertAction!) in
                 self.save = true
                 let ourProfileObject = ProfileDataToSave(profileName: self.nameProfileField.text, profileAbout: self.AboutProfileField.text, profileImage: self.profileImage.image)
-                self.gcdDataManager.save(dataToSave: ourProfileObject, closure: {
+                
+                self.sendToSave(obj: self.gcdDataManager, data: ourProfileObject, clos: {
                     self.saveClosure()
-                })
+            })
+//                self.gcdDataManager.save(dataToSave: ourProfileObject, closure: {
+//                    self.saveClosure()
+//                })
             }))
             
             present(refreshAlert, animated: true, completion: nil)
@@ -209,6 +213,7 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
             refreshAlert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (action: UIAlertAction!) in
                 self.save = true
                 let ourProfileObject = ProfileDataToSave(profileName: self.nameProfileField.text, profileAbout: self.AboutProfileField.text, profileImage: self.profileImage.image)
+                
                 self.gcdDataManager.save(dataToSave: ourProfileObject, closure: {
                     self.saveClosure()
                 })
@@ -232,11 +237,16 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         }
         else{
         self.save = true
-         let ourProfileObject = ProfileDataToSave(profileName: nameProfileField.text, profileAbout: AboutProfileField.text, profileImage: profileImage.image)
-        operationDataManager.save(object: ourProfileObject, closure: {
-            self.saveOperationClosure()
-        })
+        
+        let ourProfileObject = ProfileDataToSave(profileName: nameProfileField.text, profileAbout: AboutProfileField.text, profileImage: profileImage.image)
+        
+        sendToSave(obj: operationDataManager, data: ourProfileObject, clos: {
+            self.saveOperationClosure()})
         }
+        //                self.operationDataManager.save(dataToSave: ourProfileObject, closure: {
+        //                    self.saveOperationClosure()
+        //                })
+        
     }
     
     func setInfo(user:ProfileDataToSave?){
@@ -250,6 +260,11 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
             checkImage = data.profileImage
             
         }
+    }
+    
+    //функция для крутанов?
+    func sendToSave(obj:DataManagerMustSave, data: ProfileDataToSave, clos: @escaping ()->()){
+        obj.save(dataToSave: data, closure: clos)
     }
     
 }

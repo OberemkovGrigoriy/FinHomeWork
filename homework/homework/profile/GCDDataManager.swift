@@ -9,7 +9,12 @@
 import Foundation
 import UIKit
 
-class GCDDataManager{
+
+protocol DataManagerMustSave{
+    func save(dataToSave: ProfileDataToSave, closure: @escaping ()->())
+}
+
+class GCDDataManager: DataManagerMustSave{
     func save(dataToSave: ProfileDataToSave, closure: @escaping ()->()){
         let queueToSaveData = DispatchQueue.global(qos: .userInitiated)
         queueToSaveData.async {
