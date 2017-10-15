@@ -21,6 +21,7 @@
 		BBA9AD741F77C8DC009F8FF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9AD731F77C8DC009F8FF0 /* ViewController.swift */; };
 		BBA9AD791F77C8DC009F8FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA9AD781F77C8DC009F8FF0 /* Assets.xcassets */; };
 		BBA9AD7C1F77C8DC009F8FF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA9AD7A1F77C8DC009F8FF0 /* LaunchScreen.storyboard */; };
+		BBE962FC1F937EFB00C2331F /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE962FB1F937EFB00C2331F /* OperationDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		BBA9AD781F77C8DC009F8FF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBA9AD7B1F77C8DC009F8FF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBA9AD7D1F77C8DC009F8FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBE962FB1F937EFB00C2331F /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +58,10 @@
 		BB0C444D1F92470300EC0FB7 /* profile */ = {
 			isa = PBXGroup;
 			children = (
-				BB0C43F61F8E2AE300EC0FB7 /* ProfileViewController.swift */,
 				BB0C444B1F9246ED00EC0FB7 /* GCDDataManager.swift */,
 				BB0C444F1F92488900EC0FB7 /* ProfileDataToSave.swift */,
+				BBE962FB1F937EFB00C2331F /* OperationDataManager.swift */,
+				BB0C43F61F8E2AE300EC0FB7 /* ProfileViewController.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				BB0C43F71F8E2AE300EC0FB7 /* ProfileViewController.swift in Sources */,
 				BBA9AD721F77C8DC009F8FF0 /* AppDelegate.swift in Sources */,
 				BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */,
+				BBE962FC1F937EFB00C2331F /* OperationDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

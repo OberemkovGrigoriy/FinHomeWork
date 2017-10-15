@@ -13,6 +13,7 @@ import Foundation
 class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let gcdDataManager: GCDDataManager = GCDDataManager()
+    let operationDataManager: OperationDataManager = OperationDataManager()
     
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: {})
@@ -23,10 +24,14 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var operationButton: UIButton!
+    @IBOutlet weak var nameProfileField: UITextField!
+    @IBOutlet weak var AboutProfileField: UITextField!
+    var checkName: String? = ""
+    var checkAbout: String? = ""
+    var checkImage: UIImage? = nil
     
     @IBAction func tapPhotoButton(_ sender: Any) {
         print("Выбери изображение профиля")
-        
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self 
@@ -54,23 +59,33 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         self.present(actionSheet, animated: true, completion: nil)
     }
     
-    @IBOutlet weak var nameProfileField: UITextField!
-    @IBOutlet weak var AboutProfileField: UITextField!
-    var checkName: String? = ""
-    var checkAbout: String? = ""
-    var checkImage: UIImage? = nil
+    
+    
+    
+    
+    
+    // MARK: -Configuration and viewdidload
+    
+    
+    
+    
+    
     
     
     @IBAction func nameChange(_ sender: Any) {
         GCDbutton.isEnabled = true
+        operationButton.isEnabled = true
     }
     
     @IBAction func aboutChange(_ sender: Any) {
         GCDbutton.isEnabled = true
+        operationButton.isEnabled = true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //operationDataManager.laod(closure: self.setInfo)
         gcdDataManager.load(closure: self.setInfo)
+        
         photoButton.layer.cornerRadius = photoButton.frame.size.height / 2
         profileImage.clipsToBounds = true
         profileImage.layer.cornerRadius = photoButton.frame.size.height / 2
@@ -80,10 +95,10 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         operationButton.layer.borderWidth = 1.0
         activityIndicator.hidesWhenStopped = true
         GCDbutton.isEnabled = false
+        operationButton.isEnabled = false
         // Do any additional setup after loading the view.
     }
 
-    
     var save: Bool  = false{
         didSet{
             if(save){
@@ -99,49 +114,43 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         }
     }
     
-    
-    func setInfo(user:ProfileDataToSave?){
-        if let data = user{
-            self.profileImage.image = data.profileImage
-            self.AboutProfileField.text = data.profileAbout
-            self.nameProfileField.text = data.profileName
-            
-            checkName = data.profileName
-            checkAbout = data.profileAbout
-            checkImage = data.profileImage
-            
-        }
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     
+    
+    
+    // MARK: -PhotoButton
+    
+    
+    
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         profileImage.image = image
         GCDbutton.isEnabled = true
+        operationButton.isEnabled = true
         picker.dismiss(animated: true, completion: nil)
     }
     
    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    
+    
 
-//    func getInfo(user:ProfileDataToSave?)->(ProfileDataToSave?){
-//        let info:ProfileDataToSave = ProfileDataToSave(profileName: "", profileAbout: "", profileImage: nil)
-//        
-//        if let data = user{
-//            info.profileImage = data.profileImage
-//            info.profileAbout = data.profileAbout
-//            info.profileName = data.profileName
-//        }
-//        
-//        return info
-//    }
+    
+    
+    // MARK: -GCD and Operation button, and closure
 
+    
+    
+    
+    
     @IBAction func GCDButtonTap(_ sender: Any) {
         if(checkName == self.nameProfileField.text && checkImage! == self.profileImage.image && checkAbout == self.AboutProfileField.text){
             return
@@ -182,11 +191,65 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         })
         self.present(alert, animated: true)
         GCDbutton.isEnabled = false
+        operationButton.isEnabled = false
+        
         }
     }
+    
+    func saveOperationClosure(){
+        self.save = false
+        operationDataManager.load(closure: self.setInfo)
+        
+        if(self.nameProfileField.text == nil || self.profileImage.image == nil || self.AboutProfileField.text == nil){
+            let refreshAlert = UIAlertController(title: "Ошибка", message: "Не удалось сохранить данные", preferredStyle: UIAlertControllerStyle.alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "ОК", style: .default, handler: { (action: UIAlertAction!) in
+            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (action: UIAlertAction!) in
+                self.save = true
+                let ourProfileObject = ProfileDataToSave(profileName: self.nameProfileField.text, profileAbout: self.AboutProfileField.text, profileImage: self.profileImage.image)
+                self.gcdDataManager.save(dataToSave: ourProfileObject, closure: {
+                    self.saveClosure()
+                })
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
+        }else{
+            let alert = UIAlertController(title: "Сохранение успешно", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                // perhaps use action.title here
+            })
+            self.present(alert, animated: true)
+            GCDbutton.isEnabled = false
+            operationButton.isEnabled = false
+        }
+    }
+    
     @IBAction func operationButtonTap(_ sender: Any) {
-        save = true
-        save = false
+        if(checkName == self.nameProfileField.text && checkImage! == self.profileImage.image && checkAbout == self.AboutProfileField.text){
+        return
+        }
+        else{
+        self.save = true
+         let ourProfileObject = ProfileDataToSave(profileName: nameProfileField.text, profileAbout: AboutProfileField.text, profileImage: profileImage.image)
+        operationDataManager.save(object: ourProfileObject, closure: {
+            self.saveOperationClosure()
+        })
+        }
+    }
+    
+    func setInfo(user:ProfileDataToSave?){
+        if let data = user{
+            self.profileImage.image = data.profileImage
+            self.AboutProfileField.text = data.profileAbout
+            self.nameProfileField.text = data.profileName
+            
+            checkName = data.profileName
+            checkAbout = data.profileAbout
+            checkImage = data.profileImage
+            
+        }
     }
     
 }
