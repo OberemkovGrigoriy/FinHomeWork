@@ -83,9 +83,8 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //operationDataManager.laod(closure: self.setInfo)
-        gcdDataManager.load(closure: self.setInfo)
-        
+        operationDataManager.load(closure: self.setInfo)
+        //gcdDataManager.load(closure: self.setInfo)
         photoButton.layer.cornerRadius = photoButton.frame.size.height / 2
         profileImage.clipsToBounds = true
         profileImage.layer.cornerRadius = photoButton.frame.size.height / 2
@@ -123,7 +122,6 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
     
     
     // MARK: -PhotoButton
-    
     
     
     
@@ -178,7 +176,6 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
             refreshAlert.addAction(UIAlertAction(title: "Повторить", style: .default, handler: { (action: UIAlertAction!) in
                 self.save = true
                 let ourProfileObject = ProfileDataToSave(profileName: self.nameProfileField.text, profileAbout: self.AboutProfileField.text, profileImage: self.profileImage.image)
-                
                 self.sendToSave(obj: self.gcdDataManager, data: ourProfileObject, clos: {
                     self.saveClosure()
             })
@@ -191,7 +188,6 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         }else{
         let alert = UIAlertController(title: "Сохранение успешно", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
-            // perhaps use action.title here
         })
         self.present(alert, animated: true)
         GCDbutton.isEnabled = false
@@ -223,7 +219,6 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         }else{
             let alert = UIAlertController(title: "Сохранение успешно", message: "", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
-                // perhaps use action.title here
             })
             self.present(alert, animated: true)
             GCDbutton.isEnabled = false

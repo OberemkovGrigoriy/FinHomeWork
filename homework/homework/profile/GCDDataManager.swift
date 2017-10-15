@@ -41,21 +41,4 @@ class GCDDataManager: DataManagerMustSave{
             }
         }
     }
-//    
-//    func loadInformationList( loadinfo: ProfileDataToSave?)->(){
-//        var loadinfo = loadinfo
-//        let defaults = UserDefaults.standard
-//        let queueToLoadData = DispatchQueue.global(qos: .userInitiated)
-//         var user: ProfileDataToSave? = nil
-//        queueToLoadData.async{
-//            if let savedData = defaults.object(forKey: "userSaveData"){
-//                user = NSKeyedUnarchiver.unarchiveObject(with: savedData as! Data) as? ProfileDataToSave
-//                DispatchQueue.main.async {
-//                    loadinfo = user
-//                }
-//            }
-//        }
-//    }
-    
-    
 }

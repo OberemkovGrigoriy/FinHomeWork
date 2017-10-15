@@ -35,37 +35,16 @@ class myOperationSave: Operation{
     }
     var toSave: ProfileDataToSave
     var clos:()->()
+    
+    
     override var isAsynchronous: Bool {
         return true
     }
+    
     override func start() {
-        _executing = true
         execute()
     }
-    
-    private var _executing = false {
-        willSet {
-            willChangeValue(forKey: "isExecuting")
-        }
-        didSet {
-            didChangeValue(forKey: "isExecuting")
-        }
-    }
-    
-    private var _finished = false {
-        willSet {
-            willChangeValue(forKey: "isFinished")
-        }
-        
-        didSet {
-            didChangeValue(forKey: "isFinished")
-        }
-    }
-    
-    override var isExecuting: Bool {
-        return _executing
-    }
-    
+ 
     
     func execute() {
         let savedData = NSKeyedArchiver.archivedData(withRootObject: toSave)
@@ -74,13 +53,8 @@ class myOperationSave: Operation{
         DispatchQueue.main.async {
             self.clos()
         }
-        finish()
     }
-    func finish() {
-        
-        _executing = false
-        _finished = true
-    }
+ 
     
 }
 
@@ -94,32 +68,9 @@ class myOperationDownload: Operation{
     override var isAsynchronous: Bool {
         return true
     }
+    
     override func start() {
-        _executing = true
         execute()
-    }
-    
-    private var _executing = false {
-        willSet {
-            willChangeValue(forKey: "isExecuting")
-        }
-        didSet {
-            didChangeValue(forKey: "isExecuting")
-        }
-    }
-    
-    private var _finished = false {
-        willSet {
-            willChangeValue(forKey: "isFinished")
-        }
-        
-        didSet {
-            didChangeValue(forKey: "isFinished")
-        }
-    }
-    
-    override var isExecuting: Bool {
-        return _executing
     }
     
     
@@ -132,12 +83,7 @@ class myOperationDownload: Operation{
         DispatchQueue.main.async {
             self.clos(user)
         }
-        finish()
     }
-    func finish() {
-        
-        _executing = false
-        _finished = true
-    }
+  
     
 }

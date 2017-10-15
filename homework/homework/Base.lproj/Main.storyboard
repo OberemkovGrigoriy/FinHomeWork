@@ -35,9 +35,6 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4J-Ga-Iyv">
                                             <rect key="frame" x="8" y="30.5" width="200" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="UJ0-bD-eSb"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -53,7 +50,7 @@
                                         <constraint firstItem="v4J-Ga-Iyv" firstAttribute="leading" secondItem="vir-aE-B1b" secondAttribute="leadingMargin" id="DGv-O7-iNI"/>
                                         <constraint firstItem="v4J-Ga-Iyv" firstAttribute="top" secondItem="pe9-2A-nyJ" secondAttribute="bottom" constant="2.5" id="Ede-OP-yPj"/>
                                         <constraint firstItem="Pt3-Te-hKz" firstAttribute="leading" secondItem="pe9-2A-nyJ" secondAttribute="trailing" constant="8" id="Gub-ck-c11"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="v4J-Ga-Iyv" secondAttribute="trailing" constant="159" id="X6s-6a-jS5"/>
+                                        <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="v4J-Ga-Iyv" secondAttribute="trailing" constant="159" id="X6s-6a-jS5"/>
                                         <constraint firstItem="Pt3-Te-hKz" firstAttribute="top" secondItem="vir-aE-B1b" secondAttribute="topMargin" id="XhE-m6-GKj"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Pt3-Te-hKz" secondAttribute="trailing" id="apb-MA-eVB"/>
                                         <constraint firstItem="pe9-2A-nyJ" firstAttribute="leading" secondItem="vir-aE-B1b" secondAttribute="leading" id="pqs-oJ-yoi"/>
