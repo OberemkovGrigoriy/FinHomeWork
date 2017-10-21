@@ -45,12 +45,12 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
         
         if(messages[indexPath.row].1 == true){
             let cell = tableView.dequeueReusableCell(withIdentifier: "firstId", for: indexPath) as? MessageViewCell
-            cell?.configurate(text: messages[indexPath.row].0, incoming: messages[indexPath.row].1)
+            cell?.configurate(text: messages[indexPath.row].0)
             return cell!
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "secondId", for: indexPath) as? MessageViewCell
-            cell?.configurate(text: messages[indexPath.row].0, incoming: messages[indexPath.row].1)
+            cell?.configurate(text: messages[indexPath.row].0)
             return cell!
             
         }

@@ -67,18 +67,18 @@ extension Communicator : MCNearbyServiceAdvertiserDelegate {
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
         self.delegate?.failedToStartAdvertising(error: error)
-        //NSLog("%@", "didNotStartAdvertisingPeer: \(error)")
     }
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        print("ADVERSTIER")
         NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
-        //if((names[peerID.displayName] != nil)){
+       
         print("Inside")
         let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .none)
         invitationHandler(true, session)
         session.delegate = self
         self.sessions[peerID.displayName] = session//+1
-        //}
+        print("ADVERSTIER END")
     }
     
 }
@@ -93,6 +93,7 @@ extension Communicator : MCNearbyServiceBrowserDelegate {
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         // add if already exist
+        print("BROWSER")
         if let name = info?["userName"]{
             names[peerID.displayName] = name
             print ("founded")
@@ -101,13 +102,15 @@ extension Communicator : MCNearbyServiceBrowserDelegate {
                 let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .none)
                 session.delegate = self
                 self.sessions[peerID.displayName] = session
-                browser.invitePeer(peerID, to: session, withContext: nil, timeout: 30)
+                browser.invitePeer(peerID, to: session, withContext: nil, timeout: 300)
+                //добавил 300
+                 print("ENDD")
             }
         }
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        
+        print("MCNearbyServiceBrowser")
     }
     
 }

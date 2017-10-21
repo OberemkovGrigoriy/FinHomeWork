@@ -59,18 +59,11 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         self.present(actionSheet, animated: true, completion: nil)
     }
     
-    
-    
-    
-    
+
     
     // MARK: -Configuration and viewdidload
     
-    
-    
-    
-    
-    
+
     
     @IBAction func nameChange(_ sender: Any) {
         GCDbutton.isEnabled = true
@@ -179,9 +172,7 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
                 self.sendToSave(obj: self.gcdDataManager, data: ourProfileObject, clos: {
                     self.saveClosure()
             })
-//                self.gcdDataManager.save(dataToSave: ourProfileObject, closure: {
-//                    self.saveClosure()
-//                })
+
             }))
             
             present(refreshAlert, animated: true, completion: nil)
@@ -238,10 +229,6 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         sendToSave(obj: operationDataManager, data: ourProfileObject, clos: {
             self.saveOperationClosure()})
         }
-        //                self.operationDataManager.save(dataToSave: ourProfileObject, closure: {
-        //                    self.saveOperationClosure()
-        //                })
-        
     }
     
     func setInfo(user:ProfileDataToSave?){

@@ -21,10 +21,10 @@ class TableViewCell: UITableViewCell {
             nameLabel.text = name
         }
     }
+    
     var message: String?{
         didSet{
-            if(message==nil || message == ""){ // message =="" только для данной версии
-                messageLabel.font =  UIFont (name: "Menlo", size: 16.0)
+            if(message==nil){
                 messageLabel.text = "No messages yet"
                 
             }
@@ -34,6 +34,7 @@ class TableViewCell: UITableViewCell {
             }
         }
     }
+    
     var date:Date?{
         didSet{
             if(date != nil && (messageLabel.text != nil) ){
@@ -93,13 +94,10 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
 }

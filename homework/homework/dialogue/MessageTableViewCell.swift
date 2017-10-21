@@ -12,7 +12,6 @@ import UIKit
 
 class MessageViewCell: UITableViewCell {
 
-   
     @IBOutlet weak var messageLabel: UILabel!
     var msgText:String?{
         didSet{
@@ -31,14 +30,9 @@ class MessageViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configurate(text:String,incoming:Bool){
+    func configurate(text:String){
         msgText = text
-        if incoming {
-            messageLabel.backgroundColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
-        }
-        else{
-            messageLabel.backgroundColor = UIColor(red: 102/255, green: 255/255, blue: 102/255, alpha: 1)
-        }
+   
     }
 
 }

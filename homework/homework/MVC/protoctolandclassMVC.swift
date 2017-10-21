@@ -2,7 +2,6 @@
 import Foundation
 import UIKit
 import MultipeerConnectivity
-import AVFoundation
 
 protocol CommunicatorDelegate: class {
     func didFoundUser(userID:String,userName:String?)
