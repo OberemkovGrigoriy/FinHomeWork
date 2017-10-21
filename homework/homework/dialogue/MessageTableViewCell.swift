@@ -8,41 +8,37 @@
 
 import UIKit
 
-protocol MessageCellConfiguration: class{
-    var textOfMessage: String {get set}
-}
 
 
-class MessageTableViewCell: UITableViewCell, MessageCellConfiguration {
+class MessageViewCell: UITableViewCell {
+
    
-    func configurate(cellData: String){
-        textOfMessage = cellData
-    }
-    
-    var textOfMessage: String = "" {
+    @IBOutlet weak var messageLabel: UILabel!
+    var msgText:String?{
         didSet{
-            message.text = textOfMessage
+            messageLabel.text = msgText
         }
     }
-
-    @IBOutlet weak var message: UILabel!
-    var messageTextFromMassive : String?{
-        didSet{
-            message.text = messageTextFromMassive
-        }
-    }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
+    
+    func configurate(text:String,incoming:Bool){
+        msgText = text
+        if incoming {
+            messageLabel.backgroundColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
+        }
+        else{
+            messageLabel.backgroundColor = UIColor(red: 102/255, green: 255/255, blue: 102/255, alpha: 1)
+        }
+    }
+
 }

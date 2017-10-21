@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableCell" rowHeight="60" id="i3N-Go-bKY" customClass="TableViewCell" customModule="homework" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="60" id="i3N-Go-bKY" customClass="TableViewCell" customModule="homework" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i3N-Go-bKY" id="vir-aE-B1b">
@@ -58,10 +58,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="date" destination="Pt3-Te-hKz" id="euk-Bo-ZMh"/>
-                                    <outlet property="message" destination="v4J-Ga-Iyv" id="Ivv-v3-CFM"/>
-                                    <outlet property="name" destination="pe9-2A-nyJ" id="RC5-An-kUU"/>
-                                    <segue destination="Cd2-vn-6gR" kind="show" id="Ms6-KW-641"/>
+                                    <outlet property="messageLabel" destination="v4J-Ga-Iyv" id="quA-ws-9xt"/>
+                                    <outlet property="nameLabel" destination="pe9-2A-nyJ" id="9lh-iJ-udm"/>
+                                    <outlet property="timeLabel" destination="Pt3-Te-hKz" id="gIw-ce-u2M"/>
+                                    <segue destination="Cd2-vn-6gR" kind="show" identifier="dialogue" id="Ms6-KW-641"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -82,6 +82,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dialoguesTable" destination="lRT-MZ-LsZ" id="Xq3-TO-dKf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0Y-CQ-vuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,10 +103,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b6V-Fu-8bX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="first" rowHeight="44" id="F65-pH-oqe" customClass="MessageTableViewCell" customModule="homework" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="firstId" rowHeight="44" id="F65-pH-oqe" customClass="MessageViewCell" customModule="homework" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F65-pH-oqe" id="xDy-zh-tK8">
@@ -127,10 +130,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="message" destination="lPM-J3-f23" id="dpe-vm-iIb"/>
+                                            <outlet property="messageLabel" destination="lPM-J3-f23" id="Bsy-r3-hep"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="second" rowHeight="44" id="6AT-hL-saN" customClass="MessageTableViewCell" customModule="homework" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="secondId" rowHeight="44" id="6AT-hL-saN" customClass="MessageViewCell" customModule="homework" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6AT-hL-saN" id="v6Z-RU-Kcp">
@@ -153,28 +156,44 @@
                                                 <constraint firstItem="FRU-iX-GzA" firstAttribute="top" secondItem="v6Z-RU-Kcp" secondAttribute="topMargin" constant="3" id="th9-sA-r2o"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="message" destination="FRU-iX-GzA" id="LBH-CX-F5A"/>
+                                            <outlet property="messageLabel" destination="FRU-iX-GzA" id="DQj-Kq-4cW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MxV-5G-Z0z">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cet-lP-dCF"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="b6V-Fu-8bX" secondAttribute="trailing" id="Inr-5P-C1S"/>
                             <constraint firstItem="b6V-Fu-8bX" firstAttribute="leading" secondItem="7ZM-gw-hgf" secondAttribute="leading" id="OFV-0J-zuS"/>
+                            <constraint firstItem="gvf-J0-71q" firstAttribute="top" secondItem="MxV-5G-Z0z" secondAttribute="bottom" id="OJb-cu-qPw"/>
                             <constraint firstItem="b6V-Fu-8bX" firstAttribute="top" secondItem="7ZM-gw-hgf" secondAttribute="top" id="Vu5-5d-Q9K"/>
-                            <constraint firstAttribute="bottom" secondItem="b6V-Fu-8bX" secondAttribute="bottom" id="uUF-qo-Np5"/>
+                            <constraint firstItem="MxV-5G-Z0z" firstAttribute="leading" secondItem="7ZM-gw-hgf" secondAttribute="leading" id="bjV-JL-sIu"/>
+                            <constraint firstItem="MxV-5G-Z0z" firstAttribute="top" secondItem="b6V-Fu-8bX" secondAttribute="bottom" id="mi9-Sg-zDm"/>
+                            <constraint firstAttribute="trailing" secondItem="MxV-5G-Z0z" secondAttribute="trailing" id="oy5-8W-QlP"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mesTable" destination="b6V-Fu-8bX" id="gcp-vn-yKG"/>
+                        <outlet property="messageField" destination="MxV-5G-Z0z" id="vu6-jH-TYh"/>
+                        <outlet property="messagesTable" destination="b6V-Fu-8bX" id="JyD-hw-shL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="it7-ba-3eM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2322" y="-138"/>
+            <point key="canvasLocation" x="2320.8000000000002" y="-138.0809595202399"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QYD-xx-rdQ">
@@ -329,7 +348,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hA-u4-Z9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3293.5999999999999" y="750.67466266866575"/>
+            <point key="canvasLocation" x="2895" y="750"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PNU-4Q-Vrq">

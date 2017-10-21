@@ -83,8 +83,8 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        operationDataManager.load(closure: self.setInfo)
-        //gcdDataManager.load(closure: self.setInfo)
+        //operationDataManager.load(closure: self.setInfo)
+        gcdDataManager.load(closure: self.setInfo)
         photoButton.layer.cornerRadius = photoButton.frame.size.height / 2
         profileImage.clipsToBounds = true
         profileImage.layer.cornerRadius = photoButton.frame.size.height / 2
