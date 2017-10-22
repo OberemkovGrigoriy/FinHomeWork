@@ -52,7 +52,6 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
             let cell = tableView.dequeueReusableCell(withIdentifier: "secondId", for: indexPath) as? MessageViewCell
             cell?.configurate(text: messages[indexPath.row].0)
             return cell!
-            
         }
     }
     
@@ -73,7 +72,6 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
     
     func sendMessage(message:String){
         comManager?.sendMessage(string: message, to: userID!, completionHandler: sendMessageHandler)
-        
     }
     
     func sendMessageHandler(_ success: Bool,_ error: Error?)->(){
@@ -121,5 +119,4 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
         })
         self.present(alert,animated: true)
     }
-    
 }

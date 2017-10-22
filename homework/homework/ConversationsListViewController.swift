@@ -58,6 +58,7 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource,Me
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        dialoges.sort(by: {$0.date! > $1.date!})
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         if let cell = cell as? TableViewCell{
             cell.configurate(data: dialoges[indexPath.row])
