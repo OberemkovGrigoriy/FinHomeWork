@@ -26,7 +26,6 @@ class TableViewCell: UITableViewCell {
         didSet{
             if(message==nil){
                 messageLabel.text = "No messages yet"
-                
             }
             else{
                 messageLabel.font = UIFont.systemFont(ofSize: 17.0)

@@ -70,15 +70,12 @@ extension Communicator : MCNearbyServiceAdvertiserDelegate {
     }
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        print("ADVERSTIER")
-        NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
-       
-        print("Inside")
+     
         let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .none)
         invitationHandler(true, session)
         session.delegate = self
         self.sessions[peerID.displayName] = session//+1
-        print("ADVERSTIER END")
+   
     }
     
 }
@@ -88,23 +85,20 @@ extension Communicator : MCNearbyServiceBrowserDelegate {
     
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
         delegate?.failedToStartBrowsingForUsers(error: error)
-        //NSLog("%@", "didNotStartBrowsingForPeers: \(error)")
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        // add if already exist
-        print("BROWSER")
+        
         if let name = info?["userName"]{
             names[peerID.displayName] = name
             print ("founded")
             if self.sessions[peerID.displayName] == nil{
-                print ("added")
+               
                 let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .none)
                 session.delegate = self
                 self.sessions[peerID.displayName] = session
-                browser.invitePeer(peerID, to: session, withContext: nil, timeout: 300)
-                //добавил 300
-                 print("ENDD")
+                browser.invitePeer(peerID, to: session, withContext: nil, timeout: 30)
+              
             }
         }
     }
@@ -117,7 +111,6 @@ extension Communicator : MCNearbyServiceBrowserDelegate {
 extension Communicator : MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        NSLog("%@", "peer \(peerID) didChangeState: \(state.rawValue)")
         if(state == .connected){
             delegate?.didFoundUser(userID: peerID.displayName, userName: names[peerID.displayName])
         }

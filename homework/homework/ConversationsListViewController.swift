@@ -18,8 +18,6 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource,Me
         super.viewDidLoad()
         dialoguesTable.dataSource = self
         comManager.controller = self
-   
-        
     }
     // MARK: - Navigation
     
@@ -35,7 +33,6 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource,Me
                         dest.messages.append((msg,true))
                     }
                 }
-                
                 segue.destination.navigationItem.title = cell.name
             }
         }
@@ -99,6 +96,7 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource,Me
             }
         }
     }
+    
     func addUser(userID:String,userName:String?){
         let data:cellData = cellData(name: userName,userID:userID, message: nil, date: Date(), online: true, hasUnreaded: false)
         dialoges.insert(data, at: 0)

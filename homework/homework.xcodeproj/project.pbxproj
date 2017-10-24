@@ -14,12 +14,10 @@
 		BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */; };
 		BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */; };
 		BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */; };
-		BB16902D1F8A6D7400E5E227 /* StructDataOfButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902C1F8A6D7400E5E227 /* StructDataOfButton.swift */; };
-		BB16902F1F8A6DCA00E5E227 /* convertStringToData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902E1F8A6DCA00E5E227 /* convertStringToData.swift */; };
 		BB16903C1F8AA97D00E5E227 /* DialogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */; };
 		BB171CCD1F97BCA700AEE347 /* MVCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB171CCC1F97BCA700AEE347 /* MVCommunicator.swift */; };
 		BB171CCF1F97C3BE00AEE347 /* protoctolandclassMVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB171CCE1F97C3BE00AEE347 /* protoctolandclassMVC.swift */; };
-		BB2E068F1F9BCAD500A14B6F /*  cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E068E1F9BCAD400A14B6F /*  cell.swift */; };
+		BB2E068F1F9BCAD500A14B6F /*  cellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E068E1F9BCAD400A14B6F /*  cellData.swift */; };
 		BBA9AD721F77C8DC009F8FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9AD711F77C8DC009F8FF0 /* AppDelegate.swift */; };
 		BBA9AD741F77C8DC009F8FF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9AD731F77C8DC009F8FF0 /* ViewController.swift */; };
 		BBA9AD791F77C8DC009F8FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA9AD781F77C8DC009F8FF0 /* Assets.xcassets */; };
@@ -34,12 +32,10 @@
 		BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		BB16902C1F8A6D7400E5E227 /* StructDataOfButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructDataOfButton.swift; sourceTree = "<group>"; };
-		BB16902E1F8A6DCA00E5E227 /* convertStringToData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = convertStringToData.swift; sourceTree = "<group>"; };
 		BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueViewController.swift; sourceTree = "<group>"; };
 		BB171CCC1F97BCA700AEE347 /* MVCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCommunicator.swift; sourceTree = "<group>"; };
 		BB171CCE1F97C3BE00AEE347 /* protoctolandclassMVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protoctolandclassMVC.swift; sourceTree = "<group>"; };
-		BB2E068E1F9BCAD400A14B6F /*  cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " cell.swift"; sourceTree = "<group>"; };
+		BB2E068E1F9BCAD400A14B6F /*  cellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " cellData.swift"; sourceTree = "<group>"; };
 		BBA9AD6E1F77C8DC009F8FF0 /* homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA9AD711F77C8DC009F8FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBA9AD731F77C8DC009F8FF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,11 +105,9 @@
 		BBA9AD701F77C8DC009F8FF0 /* homework */ = {
 			isa = PBXGroup;
 			children = (
-				BB16902E1F8A6DCA00E5E227 /* convertStringToData.swift */,
-				BB16902C1F8A6D7400E5E227 /* StructDataOfButton.swift */,
 				BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */,
-				BB2E068E1F9BCAD400A14B6F /*  cell.swift */,
 				BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */,
+				BB2E068E1F9BCAD400A14B6F /*  cellData.swift */,
 				BBA9AD711F77C8DC009F8FF0 /* AppDelegate.swift */,
 				BBA9AD731F77C8DC009F8FF0 /* ViewController.swift */,
 				BBA9AD751F77C8DC009F8FF0 /* Main.storyboard */,
@@ -201,13 +195,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB16903C1F8AA97D00E5E227 /* DialogueViewController.swift in Sources */,
-				BB16902D1F8A6D7400E5E227 /* StructDataOfButton.swift in Sources */,
 				BB0C444C1F9246ED00EC0FB7 /* GCDDataManager.swift in Sources */,
-				BB16902F1F8A6DCA00E5E227 /* convertStringToData.swift in Sources */,
 				BBA9AD741F77C8DC009F8FF0 /* ViewController.swift in Sources */,
 				BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */,
 				BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */,
-				BB2E068F1F9BCAD500A14B6F /*  cell.swift in Sources */,
+				BB2E068F1F9BCAD500A14B6F /*  cellData.swift in Sources */,
 				BB0C44501F92488900EC0FB7 /* ProfileDataToSave.swift in Sources */,
 				BB0C43F71F8E2AE300EC0FB7 /* ProfileViewController.swift in Sources */,
 				BBA9AD721F77C8DC009F8FF0 /* AppDelegate.swift in Sources */,

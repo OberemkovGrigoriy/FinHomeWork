@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import QuartzCore
 class DialogueViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate,MessageReciever {
     
     var messages:[(String,Bool)] = []
@@ -23,7 +22,6 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
         super.viewDidLoad()
         self.configurateTable()
         messageField.delegate = self
-        // Do any additional setup after loading the view.
     }
     
     func configurateTable(){

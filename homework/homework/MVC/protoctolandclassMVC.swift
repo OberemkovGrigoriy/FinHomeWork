@@ -36,7 +36,6 @@ class CommunicationManager: CommunicatorDelegate{
     
     init(){
         communicator.delegate = self
-        print("CommunicationManager inited")
     }
     // Discovering
     
