@@ -14,8 +14,6 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
-
-    
     var name: String?{
         didSet{
             nameLabel.text = name

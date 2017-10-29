@@ -15,9 +15,6 @@ protocol CommunicatorDelegate: class {
     func didReceiveMessage(text: String, fromUser: String,toUser: String)
 }
 
-
-
-
 // Interaction with MC protocols
 protocol MessageReciever: class{
     func recieveMessage(text: String, fromUser: String,read:Bool)->Bool
@@ -26,22 +23,17 @@ protocol MessageReciever: class{
     func showAlert(error:Error)
 }
 
-
-
-
 class CommunicationManager: CommunicatorDelegate{
     weak var controller: MessageReciever?
     weak var chatController: MessageReciever?
-    let communicator = Communicator()//делегирует ему какие-то методы класса delegator
+    let communicator = Communicator()
     
     init(){
         communicator.delegate = self
     }
     // Discovering
     
-    
-    
-    
+
     func sendMessage(string:String,to userID:String,completionHandler: ((_ success: Bool,_ error: Error?)->())?){
         communicator.sendMessage(string: string, to: userID
             , completionHandler: completionHandler)

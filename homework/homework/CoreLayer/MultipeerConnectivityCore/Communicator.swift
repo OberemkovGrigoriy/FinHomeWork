@@ -70,12 +70,12 @@ extension Communicator : MCNearbyServiceAdvertiserDelegate {
     }
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-     
+        if((names[peerID.displayName] != nil)){
         let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .none)
         invitationHandler(true, session)
         session.delegate = self
         self.sessions[peerID.displayName] = session//+1
-   
+        }
     }
     
 }
@@ -97,8 +97,8 @@ extension Communicator : MCNearbyServiceBrowserDelegate {
                 let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .none)
                 session.delegate = self
                 self.sessions[peerID.displayName] = session
+                
                 browser.invitePeer(peerID, to: session, withContext: nil, timeout: 30)
-              
             }
         }
     }
@@ -125,13 +125,13 @@ extension Communicator : MCSessionDelegate {
         do {
             var data = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:String]
             
+            if data["text"] != nil{
             delegate?.didReceiveMessage(text: data["text"]!, fromUser: peerID.displayName, toUser: self.discoveryInfo["userName"]!)
-            
+            }
         }
         catch{
             print ("error session didRecive JSON trouble")
         }
-        NSLog("%@", "didReceiveData: \(data)")
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
