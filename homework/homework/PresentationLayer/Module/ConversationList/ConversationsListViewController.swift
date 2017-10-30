@@ -12,7 +12,7 @@ import UIKit
 class ConversationsListViewController: UIViewController,UITableViewDataSource{
     
     let comManager = CommunicationManager()
-    var conversModel: ConversationModel?
+    weak var conversModel: ConversationModel?
     
     @IBOutlet var dialoguesTable: UITableView!
     override func viewDidLoad() {
