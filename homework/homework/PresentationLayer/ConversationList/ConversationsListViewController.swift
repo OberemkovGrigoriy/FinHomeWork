@@ -9,15 +9,17 @@
 
 import UIKit
 
-class ConversationsListViewController: UIViewController,UITableViewDataSource,MessageReciever{
-    var dialoges: [cellData] = []
+class ConversationsListViewController: UIViewController,UITableViewDataSource{
+    
     let comManager = CommunicationManager()
+    var conversModel: ConversationModel?
     
     @IBOutlet var dialoguesTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         dialoguesTable.dataSource = self
-        comManager.controller = self
+        conversModel = ConversationModel(controller: self)
+        comManager.controller = conversModel
     }
     // MARK: - Navigation
     
@@ -48,66 +50,26 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource,Me
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // в будущем считать элементы массива
-        return self.dialoges.count
+        return conversModel!.dialoges.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Online"
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        dialoges.sort(by: {$0.date! > $1.date!})
+        conversModel?.dialoges.sort(by: {$0.date! > $1.date!})
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         if let cell = cell as? TableViewCell{
-            cell.configurate(data: dialoges[indexPath.row])
+            cell.configurate(data: (conversModel?.dialoges[indexPath.row])!)
             return cell
         }
         return cell
     }
     
-    // MARK: - MessageReciever
-    
-    func recieveMessage(text: String, fromUser: String,read: Bool)->Bool{
-        for (index,dialog) in dialoges.enumerated(){
-            if dialog.userID == fromUser{
-                dialoges[index].message = text
-                dialoges[index].date = Date()
-                // make unread
-                if !read{
-                    dialoges[index].hasUnreadedMessages = true
-                }
-                else{
-                    dialoges[index].hasUnreadedMessages = false
-                }
-                DispatchQueue.main.async{
-                    self.dialoguesTable.reloadData()
-                }
-            }
-        }
-        return false
-    }
-    
-    func deleteUser(userID:String){
-        for (index,dialog) in dialoges.enumerated(){
-            if dialog.userID == userID{
-                dialoges.remove(at: index)
-                DispatchQueue.main.async{
-                    self.dialoguesTable.reloadData()
-                }
-            }
-        }
-    }
-    
-    func addUser(userID:String,userName:String?){
-        let data:cellData = cellData(name: userName,userID:userID, message: nil, date: Date(), online: true, hasUnreaded: false)
-        dialoges.insert(data, at: 0)
-        DispatchQueue.main.async{
+    func setup(){
+        DispatchQueue.main.async {
             self.dialoguesTable.reloadData()
         }
     }
-    func showAlert(error:Error){
-        let alert = UIAlertController(title: error.localizedDescription, message:nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Ок", style: .default) { action in
-        })
-        self.present(alert,animated: true)
-    }
+    
 }

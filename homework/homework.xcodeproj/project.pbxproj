@@ -12,6 +12,7 @@
 		BB0C44501F92488900EC0FB7 /* ProfileDataToSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0C444F1F92488900EC0FB7 /* ProfileDataToSave.swift */; };
 		BB0D35CE1F9256C8009750A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA9AD751F77C8DC009F8FF0 /* Main.storyboard */; };
 		BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */; };
+		BB13CDF91FA70B0600AB5C01 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13CDF81FA70B0600AB5C01 /* ConversationModel.swift */; };
 		BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */; };
 		BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */; };
 		BB16903C1F8AA97D00E5E227 /* DialogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */; };
@@ -30,6 +31,7 @@
 		BB0C444B1F9246ED00EC0FB7 /* GCDDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
 		BB0C444F1F92488900EC0FB7 /* ProfileDataToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataToSave.swift; sourceTree = "<group>"; };
 		BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		BB13CDF81FA70B0600AB5C01 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */,
+				BB13CDF81FA70B0600AB5C01 /* ConversationModel.swift */,
 				BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */,
 				BB2E068E1F9BCAD400A14B6F /* CellData.swift */,
 			);
@@ -250,6 +253,7 @@
 				BB2E068F1F9BCAD500A14B6F /* CellData.swift in Sources */,
 				BB0C44501F92488900EC0FB7 /* ProfileDataToSave.swift in Sources */,
 				BB0C43F71F8E2AE300EC0FB7 /* ProfileViewController.swift in Sources */,
+				BB13CDF91FA70B0600AB5C01 /* ConversationModel.swift in Sources */,
 				BBA9AD721F77C8DC009F8FF0 /* AppDelegate.swift in Sources */,
 				BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */,
 				BB171CCD1F97BCA700AEE347 /* Communicator.swift in Sources */,
