@@ -7,12 +7,14 @@
 //
 
 import UIKit
-class DialogueViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate,MessageReciever {
+class DialogueViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate {
     
-    var messages:[(String,Bool)] = []
     var userID: String?
-    var online = true
     var comManager: CommunicationManager?
+    var DialogModel: DialogueModel?
+    var online = true 
+    var messages:[(String,Bool)] = []
+ 
     
     
     @IBOutlet weak var messagesTable: UITableView!
@@ -22,6 +24,8 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
         super.viewDidLoad()
         self.configurateTable()
         messageField.delegate = self
+        DialogModel = DialogueModel(controller: self)
+        comManager!.controller = DialogModel
     }
     
     func configurateTable(){
@@ -43,12 +47,12 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
         
         if(messages[indexPath.row].1 == true){
             let cell = tableView.dequeueReusableCell(withIdentifier: "firstId", for: indexPath) as? MessageViewCell
-            cell?.configurate(text: messages[indexPath.row].0)
+            cell?.configurate(text: (messages[indexPath.row].0))
             return cell!
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "secondId", for: indexPath) as? MessageViewCell
-            cell?.configurate(text: messages[indexPath.row].0)
+            cell?.configurate(text: (messages[indexPath.row].0))
             return cell!
         }
     }
@@ -58,9 +62,9 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
         if let txt = textField.text{
             messages.append((txt,false))
             sendMessage(message: txt)
-            DispatchQueue.main.async{
-                self.messagesTable.reloadData()
-            }
+            
+            setup()
+            
             textField.text = ""
         }
         textField.endEditing(true)
@@ -75,46 +79,14 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
     func sendMessageHandler(_ success: Bool,_ error: Error?)->(){
         if !success{
             if let er = error{
-                showAlert(error: er)
+                print(er)
             }
         }
     }
     
-    // MARK: - MessageReciever
-    func recieveMessage(text: String, fromUser: String,read: Bool)->Bool{
-        if self.userID == fromUser{
-            print("recieved")
-            self.messages.append((text,true))
-            DispatchQueue.main.async{
-                self.messagesTable.reloadData()
-            }
-            return true
+    func setup(){
+        DispatchQueue.main.async {
+            self.messagesTable.reloadData()
         }
-        return false
-    }
-    
-    func deleteUser(userID:String){
-        if self.userID == userID{
-            online = false
-            DispatchQueue.main.async{
-                self.messageField.isHidden = true
-            }
-        }
-    }
-    
-    func addUser(userID:String,userName:String?){
-        if self.userID == userID{
-            online = true
-            DispatchQueue.main.async{
-                self.messageField.isHidden = false
-            }
-        }
-    }
-    
-    func showAlert(error:Error){
-        let alert = UIAlertController(title: error.localizedDescription, message:nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Ок", style: .default) { action in
-        })
-        self.present(alert,animated: true)
     }
 }

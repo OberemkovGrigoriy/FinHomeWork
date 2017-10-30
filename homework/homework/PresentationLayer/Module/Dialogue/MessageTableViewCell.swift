@@ -27,7 +27,6 @@ class MessageViewCell: UITableViewCell {
     
     func configurate(text:String){
         msgText = text
-   
     }
 
 }

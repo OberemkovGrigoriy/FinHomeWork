@@ -26,17 +26,19 @@ class ConversationModel: MessageReciever{
                 // make unread
                 if !read{
                     dialoges[index].hasUnreadedMessages = true
+                    controller.setup()
                 }
                 else{
                     dialoges[index].hasUnreadedMessages = false
+                    controller.setup()
                 }
             }
         }
-        controller.setup()
         return false
     }
     
     func deleteUser(userID:String){
+        print("delete")
         for (index,dialog) in dialoges.enumerated(){
             if dialog.userID == userID{
                 dialoges.remove(at: index)

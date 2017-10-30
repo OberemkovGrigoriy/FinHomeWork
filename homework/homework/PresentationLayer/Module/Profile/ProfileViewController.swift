@@ -63,8 +63,6 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
     
     // MARK: -Configuration and viewdidload
     
-
-    
     @IBAction func nameChange(_ sender: Any) {
         GCDbutton.isEnabled = true
         operationButton.isEnabled = true
@@ -76,6 +74,10 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSettings()
+    }
+
+    func setupSettings(){
         //operationDataManager.load(closure: self.setInfo)
         gcdDataManager.load(closure: self.setInfo)
         photoButton.layer.cornerRadius = photoButton.frame.size.height / 2
@@ -88,9 +90,8 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         activityIndicator.hidesWhenStopped = true
         GCDbutton.isEnabled = false
         operationButton.isEnabled = false
-        // Do any additional setup after loading the view.
     }
-
+    
     var save: Bool  = false{
         didSet{
             if(save){
@@ -111,12 +112,7 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    
     // MARK: -PhotoButton
-    
-    
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -132,15 +128,8 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
     }
     
     
-    
-
-    
-    
     // MARK: -GCD and Operation button, and closure
 
-    
-    
-    
     
     @IBAction func GCDButtonTap(_ sender: Any) {
         if(checkName == self.nameProfileField.text && checkImage! == self.profileImage.image && checkAbout == self.AboutProfileField.text){
@@ -240,7 +229,6 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
             checkName = data.profileName
             checkAbout = data.profileAbout
             checkImage = data.profileImage
-            
         }
     }
     

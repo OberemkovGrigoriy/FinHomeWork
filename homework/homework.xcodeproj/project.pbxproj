@@ -13,6 +13,7 @@
 		BB0D35CE1F9256C8009750A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA9AD751F77C8DC009F8FF0 /* Main.storyboard */; };
 		BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */; };
 		BB13CDF91FA70B0600AB5C01 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13CDF81FA70B0600AB5C01 /* ConversationModel.swift */; };
+		BB13CDFC1FA792B000AB5C01 /* DialogueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13CDFB1FA792B000AB5C01 /* DialogueModel.swift */; };
 		BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */; };
 		BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */; };
 		BB16903C1F8AA97D00E5E227 /* DialogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */; };
@@ -32,6 +33,7 @@
 		BB0C444F1F92488900EC0FB7 /* ProfileDataToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataToSave.swift; sourceTree = "<group>"; };
 		BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		BB13CDF81FA70B0600AB5C01 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
+		BB13CDFB1FA792B000AB5C01 /* DialogueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueModel.swift; sourceTree = "<group>"; };
 		BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */,
+				BB13CDFB1FA792B000AB5C01 /* DialogueModel.swift */,
 				BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */,
 			);
 			path = Dialogue;
@@ -80,7 +83,7 @@
 		BB12ABE71FA607C60025059B /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
-				BB12ABEC1FA60FF70025059B /* DataManager */,
+				BB12ABEC1FA60FF70025059B /* DataManagerCore */,
 				BB12ABEB1FA60F8D0025059B /* MultipeerConnectivityCore */,
 			);
 			path = CoreLayer;
@@ -89,9 +92,7 @@
 		BB12ABE81FA608140025059B /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				BB12ABED1FA61D500025059B /* ConversationList */,
-				BB0C444D1F92470300EC0FB7 /* Profile */,
-				BB0C444E1F92471B00EC0FB7 /* Dialogue */,
+				BB13CDFA1FA78ED000AB5C01 /* Module */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -120,13 +121,13 @@
 			path = MultipeerConnectivityCore;
 			sourceTree = "<group>";
 		};
-		BB12ABEC1FA60FF70025059B /* DataManager */ = {
+		BB12ABEC1FA60FF70025059B /* DataManagerCore */ = {
 			isa = PBXGroup;
 			children = (
 				BBE962FB1F937EFB00C2331F /* OperationDataManager.swift */,
 				BB0C444B1F9246ED00EC0FB7 /* GCDDataManager.swift */,
 			);
-			path = DataManager;
+			path = DataManagerCore;
 			sourceTree = "<group>";
 		};
 		BB12ABED1FA61D500025059B /* ConversationList */ = {
@@ -138,6 +139,16 @@
 				BB2E068E1F9BCAD400A14B6F /* CellData.swift */,
 			);
 			path = ConversationList;
+			sourceTree = "<group>";
+		};
+		BB13CDFA1FA78ED000AB5C01 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				BB0C444E1F92471B00EC0FB7 /* Dialogue */,
+				BB0C444D1F92470300EC0FB7 /* Profile */,
+				BB12ABED1FA61D500025059B /* ConversationList */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 		BBA9AD651F77C8DC009F8FF0 = {
@@ -251,6 +262,7 @@
 				BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */,
 				BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */,
 				BB2E068F1F9BCAD500A14B6F /* CellData.swift in Sources */,
+				BB13CDFC1FA792B000AB5C01 /* DialogueModel.swift in Sources */,
 				BB0C44501F92488900EC0FB7 /* ProfileDataToSave.swift in Sources */,
 				BB0C43F71F8E2AE300EC0FB7 /* ProfileViewController.swift in Sources */,
 				BB13CDF91FA70B0600AB5C01 /* ConversationModel.swift in Sources */,

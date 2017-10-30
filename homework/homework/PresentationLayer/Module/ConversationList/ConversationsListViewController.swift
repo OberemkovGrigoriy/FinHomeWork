@@ -12,7 +12,7 @@ import UIKit
 class ConversationsListViewController: UIViewController,UITableViewDataSource{
     
     let comManager = CommunicationManager()
-    weak var conversModel: ConversationModel?
+    var conversModel: ConversationModel?
     
     @IBOutlet var dialoguesTable: UITableView!
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource{
                 if let dest = segue.destination as? DialogueViewController{
                     dest.userID = cell.userID
                     dest.comManager = comManager
-                    comManager.chatController = dest
+                    comManager.chatController = dest.DialogModel 
                     cell.hasUnreadedMessages = false
                     if let msg = cell.message{
                         dest.messages.append((msg,true))
@@ -50,7 +50,7 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // в будущем считать элементы массива
-        return conversModel!.dialoges.count
+            return conversModel!.dialoges.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Online"
@@ -60,8 +60,10 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource{
         conversModel?.dialoges.sort(by: {$0.date! > $1.date!})
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         if let cell = cell as? TableViewCell{
-            cell.configurate(data: (conversModel?.dialoges[indexPath.row])!)
-            return cell
+            if(conversModel?.dialoges[indexPath.row] != nil){
+                cell.configurate(data: (conversModel?.dialoges[indexPath.row])!)
+                return cell
+            }
         }
         return cell
     }
