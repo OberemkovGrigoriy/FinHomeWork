@@ -14,8 +14,6 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
     var DialogModel: DialogueModel?
     var online = true 
     var messages:[(String,Bool)] = []
- 
-    
     
     @IBOutlet weak var messagesTable: UITableView!
     @IBOutlet weak var messageField: UITextField!
@@ -44,7 +42,6 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if(messages[indexPath.row].1 == true){
             let cell = tableView.dequeueReusableCell(withIdentifier: "firstId", for: indexPath) as? MessageViewCell
             cell?.configurate(text: (messages[indexPath.row].0))
@@ -58,7 +55,6 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         if let txt = textField.text{
             messages.append((txt,false))
             sendMessage(message: txt)

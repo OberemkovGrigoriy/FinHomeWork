@@ -308,6 +308,15 @@
                                     <constraint firstAttribute="bottom" secondItem="Fuo-sC-E8E" secondAttribute="bottom" constant="8" id="xcJ-mR-iwV"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Feg-aY-vgS">
+                                <rect key="frame" x="16" y="483" width="343" height="113"/>
+                                <state key="normal" title="CORE DATA">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapCoreData:" destination="cHU-DU-OA0" eventType="touchUpInside" id="4bY-JJ-ehT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -318,11 +327,15 @@
                             <constraint firstItem="CBf-Hj-uUu" firstAttribute="top" secondItem="XLP-UY-3z2" secondAttribute="bottom" constant="219" id="8xy-8s-ASc"/>
                             <constraint firstItem="i8I-dN-yPO" firstAttribute="centerY" secondItem="rWA-Rk-95g" secondAttribute="centerY" id="Ffg-jF-7t6"/>
                             <constraint firstItem="O2C-R6-YoL" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leadingMargin" id="HJ3-Ca-StP"/>
+                            <constraint firstItem="Feg-aY-vgS" firstAttribute="top" secondItem="i8I-dN-yPO" secondAttribute="bottom" constant="100" id="IXQ-Nu-hNW"/>
                             <constraint firstItem="x2s-Zb-TMU" firstAttribute="top" secondItem="r3p-D1-d67" secondAttribute="bottom" id="IdV-aT-FrO"/>
                             <constraint firstItem="fLW-hA-Jsv" firstAttribute="top" secondItem="XLP-UY-3z2" secondAttribute="bottom" constant="219" id="NRp-O4-Q3T"/>
                             <constraint firstItem="fLW-hA-Jsv" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leadingMargin" id="Njs-c4-nvp"/>
                             <constraint firstItem="O2C-R6-YoL" firstAttribute="trailing" secondItem="rWA-Rk-95g" secondAttribute="trailingMargin" id="OqF-0Q-V4G"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Feg-aY-vgS" secondAttribute="trailing" id="SOt-CJ-OGy"/>
+                            <constraint firstItem="CBf-Hj-uUu" firstAttribute="top" secondItem="Feg-aY-vgS" secondAttribute="bottom" id="T0E-2w-Lc2"/>
                             <constraint firstItem="O2C-R6-YoL" firstAttribute="top" secondItem="x2s-Zb-TMU" secondAttribute="bottom" id="czg-43-cxj"/>
+                            <constraint firstItem="Feg-aY-vgS" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leadingMargin" id="fz9-jn-BeK"/>
                             <constraint firstItem="XLP-UY-3z2" firstAttribute="trailing" secondItem="rWA-Rk-95g" secondAttribute="trailingMargin" id="gwt-2c-Cxh"/>
                             <constraint firstItem="x2s-Zb-TMU" firstAttribute="leading" secondItem="rWA-Rk-95g" secondAttribute="leadingMargin" constant="50" id="kRk-lK-qkm"/>
                             <constraint firstItem="CBf-Hj-uUu" firstAttribute="leading" secondItem="fLW-hA-Jsv" secondAttribute="trailing" constant="33" id="lAq-Uv-gbj"/>
@@ -346,6 +359,7 @@
                         <outlet property="AboutProfileField" destination="XLP-UY-3z2" id="1ET-pY-AcI"/>
                         <outlet property="GCDbutton" destination="fLW-hA-Jsv" id="1CM-R4-FbW"/>
                         <outlet property="activityIndicator" destination="i8I-dN-yPO" id="SuZ-XT-Gc3"/>
+                        <outlet property="coredataButton" destination="Feg-aY-vgS" id="hHN-VW-axt"/>
                         <outlet property="nameProfileField" destination="O2C-R6-YoL" id="Rpc-mS-ygW"/>
                         <outlet property="operationButton" destination="CBf-Hj-uUu" id="atJ-z8-dFO"/>
                         <outlet property="photoButton" destination="8Uo-F5-bEr" id="AI5-ZM-61C"/>
@@ -354,7 +368,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hA-u4-Z9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2895" y="750"/>
+            <point key="canvasLocation" x="2703" y="668"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PNU-4Q-Vrq">

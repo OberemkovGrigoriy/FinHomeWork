@@ -25,16 +25,12 @@ class DialogueModel: MessageReciever{
             
             return true
         }
-        
         self.controller.setup()
         
         return false
     }
     
     func deleteUser(userID:String){
-        print("DELETE")
-        print("DELETE")
-        print("DELETE")
         if controller.userID == userID{
             controller.online = false
             DispatchQueue.main.async {
@@ -44,9 +40,6 @@ class DialogueModel: MessageReciever{
     }
     
     func addUser(userID:String,userName:String?){
-        print("ADD")
-         print("ADD")
-         print("ADD")
         if controller.userID == userID{
             controller.online = true
             DispatchQueue.main.async {

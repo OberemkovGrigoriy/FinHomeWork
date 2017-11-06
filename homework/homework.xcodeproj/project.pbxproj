@@ -14,6 +14,10 @@
 		BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */; };
 		BB13CDF91FA70B0600AB5C01 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13CDF81FA70B0600AB5C01 /* ConversationModel.swift */; };
 		BB13CDFC1FA792B000AB5C01 /* DialogueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13CDFB1FA792B000AB5C01 /* DialogueModel.swift */; };
+		BB1582541FAE229400E68F3E /* TinkoffHomework.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB1582521FAE229400E68F3E /* TinkoffHomework.xcdatamodeld */; };
+		BB1582561FAE235500E68F3E /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1582551FAE235500E68F3E /* Stack.swift */; };
+		BB1582581FAE382B00E68F3E /* AppUserCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1582571FAE382B00E68F3E /* AppUserCore.swift */; };
+		BB15825A1FAE457700E68F3E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1582591FAE457700E68F3E /* StorageManager.swift */; };
 		BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */; };
 		BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */; };
 		BB16903C1F8AA97D00E5E227 /* DialogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */; };
@@ -34,6 +38,10 @@
 		BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		BB13CDF81FA70B0600AB5C01 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		BB13CDFB1FA792B000AB5C01 /* DialogueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueModel.swift; sourceTree = "<group>"; };
+		BB1582531FAE229400E68F3E /* TinkoffHomework.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffHomework.xcdatamodel; sourceTree = "<group>"; };
+		BB1582551FAE235500E68F3E /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		BB1582571FAE382B00E68F3E /* AppUserCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserCore.swift; sourceTree = "<group>"; };
+		BB1582591FAE457700E68F3E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BB16903B1F8AA97D00E5E227 /* DialogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +133,11 @@
 			isa = PBXGroup;
 			children = (
 				BBE962FB1F937EFB00C2331F /* OperationDataManager.swift */,
+				BB1582571FAE382B00E68F3E /* AppUserCore.swift */,
+				BB1582551FAE235500E68F3E /* Stack.swift */,
+				BB1582591FAE457700E68F3E /* StorageManager.swift */,
 				BB0C444B1F9246ED00EC0FB7 /* GCDDataManager.swift */,
+				BB1582521FAE229400E68F3E /* TinkoffHomework.xcdatamodeld */,
 			);
 			path = DataManagerCore;
 			sourceTree = "<group>";
@@ -257,11 +269,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB16903C1F8AA97D00E5E227 /* DialogueViewController.swift in Sources */,
+				BB1582541FAE229400E68F3E /* TinkoffHomework.xcdatamodeld in Sources */,
 				BB0C444C1F9246ED00EC0FB7 /* GCDDataManager.swift in Sources */,
+				BB1582561FAE235500E68F3E /* Stack.swift in Sources */,
 				BBA9AD741F77C8DC009F8FF0 /* ViewController.swift in Sources */,
 				BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */,
 				BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */,
+				BB1582581FAE382B00E68F3E /* AppUserCore.swift in Sources */,
 				BB2E068F1F9BCAD500A14B6F /* CellData.swift in Sources */,
+				BB15825A1FAE457700E68F3E /* StorageManager.swift in Sources */,
 				BB13CDFC1FA792B000AB5C01 /* DialogueModel.swift in Sources */,
 				BB0C44501F92488900EC0FB7 /* ProfileDataToSave.swift in Sources */,
 				BB0C43F71F8E2AE300EC0FB7 /* ProfileViewController.swift in Sources */,
@@ -451,6 +467,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BB1582521FAE229400E68F3E /* TinkoffHomework.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BB1582531FAE229400E68F3E /* TinkoffHomework.xcdatamodel */,
+			);
+			currentVersion = BB1582531FAE229400E68F3E /* TinkoffHomework.xcdatamodel */;
+			path = TinkoffHomework.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BBA9AD661F77C8DC009F8FF0 /* Project object */;
 }
