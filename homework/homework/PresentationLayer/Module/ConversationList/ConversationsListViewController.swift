@@ -8,11 +8,16 @@
 
 
 import UIKit
+import Foundation
+import CoreData
 
 class ConversationsListViewController: UIViewController,UITableViewDataSource{
     
     let comManager = CommunicationManager()
     var conversModel: ConversationModel?
+    var fetchedResultsController: NSFetchedResultsController<Conversation>?
+    var provider : ListDataProvider?
+
     
     @IBOutlet var dialoguesTable: UITableView!
     override func viewDidLoad() {
@@ -20,8 +25,18 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource{
         dialoguesTable.dataSource = self
         conversModel = ConversationModel(controller: self)
         comManager.controller = conversModel
+        provider = ListDataProvider(tableView: dialoguesTable)
+        fetchedResultsController = provider?.fetchedResultsController
     }
     // MARK: - Navigation
+    override func viewWillAppear(_ animated: Bool) {
+        do {
+            try self.fetchedResultsController?.performFetch()
+        } catch {
+            print("Error fetching: \(error)")
+        }
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "dialogue"{
@@ -29,7 +44,7 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource{
                 if let dest = segue.destination as? DialogueViewController{
                     dest.userID = cell.userID
                     dest.comManager = comManager
-                    comManager.chatController = dest.DialogModel 
+                    comManager.chatController = dest
                     cell.hasUnreadedMessages = false
                     if let msg = cell.message{
                         dest.messages.append((msg,true))

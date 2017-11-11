@@ -11,6 +11,7 @@ import UIKit
 import CoreData
 
 class StackCoreData{
+    static let sharedInstance: StackCoreData = StackCoreData()
     private var storeURL : URL{
         get{
             let documentsDirURL : URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

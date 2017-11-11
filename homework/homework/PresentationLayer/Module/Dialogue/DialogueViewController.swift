@@ -7,13 +7,17 @@
 //
 
 import UIKit
-class DialogueViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate {
+import CoreData
+
+class DialogueViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate, MessageReciever {
     
     var userID: String?
     var comManager: CommunicationManager?
-    var DialogModel: DialogueModel?
-    var online = true 
+    var online = true
+    var conversationId: String?
     var messages:[(String,Bool)] = []
+    var fetchedResultsController: NSFetchedResultsController<Message>?
+    var provider: ConversationDataProvider?
     
     @IBOutlet weak var messagesTable: UITableView!
     @IBOutlet weak var messageField: UITextField!
@@ -22,8 +26,16 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
         super.viewDidLoad()
         self.configurateTable()
         messageField.delegate = self
-        DialogModel = DialogueModel(controller: self)
-        comManager!.controller = DialogModel
+        if(conversationId != nil){
+        provider = ConversationDataProvider(tableView: messagesTable,conversationId: conversationId!)
+        }
+        fetchedResultsController = provider?.fetchedResultsController
+        do {
+            try self.fetchedResultsController?.performFetch()
+        } catch {
+            print("Error fetching: \(error)")
+        }
+
     }
     
     func configurateTable(){
@@ -84,5 +96,39 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
         DispatchQueue.main.async {
             self.messagesTable.reloadData()
         }
+    }
+
+    func recieveMessage(text: String, fromUser: String,read: Bool)->Bool{
+        
+        if userID == fromUser{
+            messages.append((text,true))
+            setup()
+            return true
+        }
+        setup()
+        
+        return false
+    }
+    
+    func deleteUser(userID:String){
+        if userID == userID{
+            online = false
+            DispatchQueue.main.async {
+                self.messageField.isHidden = true
+            }
+        }
+    }
+    
+    func addUser(userID:String,userName:String?){
+        if userID == userID{
+            online = true
+            DispatchQueue.main.async {
+                self.messageField.isHidden = false
+            }
+        }
+    }
+    
+    func showAlert(error:Error){
+        print(error.localizedDescription)
     }
 }

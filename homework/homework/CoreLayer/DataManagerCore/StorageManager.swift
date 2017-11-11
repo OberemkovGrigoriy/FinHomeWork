@@ -9,9 +9,17 @@
 import Foundation
 import UIKit
 import CoreData
-//ProfileDataToSave
-class StorageManager {
-    let coreDataStack = StackCoreData()
+
+protocol StorageProtocol: class{
+    func recieveMessage(text: String, fromUser: String, toUser: String)
+    func didFoundUser(userID: String, userName: String?)
+    func didLostUser(userID: String)
+}
+
+
+class StorageManager: StorageProtocol  {
+
+    let coreDataStack = StackCoreData.sharedInstance
     
     func save(object: ProfileDataToSave, closure: @escaping () -> ()){
         if let context = coreDataStack.saveContext {
@@ -47,4 +55,42 @@ class StorageManager {
             print ("No mainContext")
         }
     }
+    
+    
+    func recieveMessage(text: String, fromUser: String,toUser:String){
+        if let context = coreDataStack.saveContext {
+            let message = Message.insertMessage(text: text, recieverId: toUser, senderId: fromUser, in: context)
+            message?.isUnread = true
+            let conversation = Conversation.findOrInsertConversation(with: String.generateConversationId(id1: fromUser, id2: toUser), in: context)
+            conversation?.lastMessage = message
+            coreDataStack.performSave(context: context, completionHandler: nil)
+        }
+    }
+    func didFoundUser(userID:String,userName:String?){
+        if let context = coreDataStack.saveContext {
+            let user = User.findOrInsertUser(with: userID, in: context)
+            user?.name = userName
+            user?.isOnline = true
+            // probably add save before
+            let conversation = Conversation.findOrInsertConversation(with: String.generateConversationId(id1: userID, id2: UIDevice.current.name), in: context)
+            let me = User.findOrInsertUser(with: UIDevice.current.name, in: context) // check then on AppUser
+            conversation?.addToParticipants(user!)
+            conversation?.addToParticipants(me!)
+            conversation?.isOnline = true
+            print (conversation?.conversationId)
+            coreDataStack.performSave(context: context, completionHandler: nil)
+        }
+        
+    }
+    func didLostUser(userID:String){
+        if let context = coreDataStack.saveContext {
+            let user = User.findOrInsertUser(with: userID, in: context)
+            user?.isOnline = false
+            let conversation = Conversation.findOrInsertConversation(with: String.generateConversationId(id1: userID, id2: UIDevice.current.name), in: context)
+            conversation?.isOnline = false
+            coreDataStack.performSave(context: context, completionHandler: nil)
+        }
+        
+    }
+    
 }
