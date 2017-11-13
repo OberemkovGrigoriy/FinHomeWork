@@ -17,8 +17,6 @@ extension Conversation {
             return conversation
         }
         return nil
-        
-        
     }
     
     
@@ -52,8 +50,6 @@ extension Conversation {
             print ("Failed to fetch conversation: \(error)")
         }
         return conversation
-        
-        
     }
     
     

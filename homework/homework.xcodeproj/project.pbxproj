@@ -12,7 +12,6 @@
 		BB0C44501F92488900EC0FB7 /* ProfileDataToSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0C444F1F92488900EC0FB7 /* ProfileDataToSave.swift */; };
 		BB0D35CE1F9256C8009750A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA9AD751F77C8DC009F8FF0 /* Main.storyboard */; };
 		BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */; };
-		BB13CDF91FA70B0600AB5C01 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13CDF81FA70B0600AB5C01 /* ConversationModel.swift */; };
 		BB145B901FB79DF00096C77D /* DialogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB145B8F1FB79DF00096C77D /* DialogProvider.swift */; };
 		BB145B931FB7A1700096C77D /* ConversProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB145B921FB7A1700096C77D /* ConversProvider.swift */; };
 		BB1582541FAE229400E68F3E /* TinkoffHomework.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB1582521FAE229400E68F3E /* TinkoffHomework.xcdatamodeld */; };
@@ -40,7 +39,6 @@
 		BB0C444B1F9246ED00EC0FB7 /* GCDDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
 		BB0C444F1F92488900EC0FB7 /* ProfileDataToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataToSave.swift; sourceTree = "<group>"; };
 		BB11FE1D1F8AAEA4009DE922 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		BB13CDF81FA70B0600AB5C01 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		BB145B8F1FB79DF00096C77D /* DialogProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogProvider.swift; sourceTree = "<group>"; };
 		BB145B921FB7A1700096C77D /* ConversProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversProvider.swift; sourceTree = "<group>"; };
 		BB1582531FAE229400E68F3E /* TinkoffHomework.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffHomework.xcdatamodel; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 			children = (
 				BB145B921FB7A1700096C77D /* ConversProvider.swift */,
 				BB1690281F8A6A2000E5E227 /* ConversationsListViewController.swift */,
-				BB13CDF81FA70B0600AB5C01 /* ConversationModel.swift */,
 				BB16902A1F8A6C3500E5E227 /* TableViewCell.swift */,
 				BB2E068E1F9BCAD400A14B6F /* CellData.swift */,
 			);
@@ -297,7 +294,6 @@
 				BB145B931FB7A1700096C77D /* ConversProvider.swift in Sources */,
 				BB0C44501F92488900EC0FB7 /* ProfileDataToSave.swift in Sources */,
 				BB0C43F71F8E2AE300EC0FB7 /* ProfileViewController.swift in Sources */,
-				BB13CDF91FA70B0600AB5C01 /* ConversationModel.swift in Sources */,
 				BBA9AD721F77C8DC009F8FF0 /* AppDelegate.swift in Sources */,
 				BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */,
 				BB171CCD1F97BCA700AEE347 /* Communicator.swift in Sources */,

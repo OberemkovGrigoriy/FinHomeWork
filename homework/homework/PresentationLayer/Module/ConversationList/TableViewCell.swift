@@ -13,17 +13,19 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    var conversationId:String?
     
     var name: String?{
         didSet{
             nameLabel.text = name
         }
     }
-    
     var message: String?{
         didSet{
-            if(message==nil){
+            if(message==nil || message == ""){ 
+                messageLabel.font =  UIFont (name: "Menlo", size: 16.0)
                 messageLabel.text = "No messages yet"
+                
             }
             else{
                 messageLabel.font = UIFont.systemFont(ofSize: 17.0)
@@ -31,7 +33,6 @@ class TableViewCell: UITableViewCell {
             }
         }
     }
-    
     var date:Date?{
         didSet{
             if(date != nil && (messageLabel.text != nil) ){
@@ -51,6 +52,8 @@ class TableViewCell: UITableViewCell {
         }
     }
     
+    var userID: String?
+    
     var online:Bool = false
     {
         didSet{
@@ -64,10 +67,7 @@ class TableViewCell: UITableViewCell {
         }
     }
     
-    var userID: String?
-    
-    
-    var hasUnreadedMessages: Bool = false{
+    var hasUnreadedMessages:Bool = false{
         didSet{
             if(!(message==nil || message == "")){
                 if hasUnreadedMessages==false{
@@ -89,12 +89,41 @@ class TableViewCell: UITableViewCell {
         userID = data.userID
     }
     
+    func configurate(data:Conversation){
+        let participants = data.participants?.allObjects as! [User]
+        var opponent:User?
+        if participants.first?.userId == UIDevice.current.name{
+            opponent = participants.last
+        }
+        else {
+            opponent = participants.first
+        }
+        print ("Configurate")
+        print(opponent?.name)
+        let lastMessage = data.lastMessage
+        name = opponent?.name
+        date = lastMessage?.date as Date?
+        online = data.isOnline
+        message = lastMessage?.text
+        print(lastMessage?.isUnread)
+        if let cond = lastMessage?.isUnread{
+            hasUnreadedMessages = cond // time decision
+        }
+        else{
+            hasUnreadedMessages = false
+        }
+        userID = opponent?.userId
+        conversationId = data.conversationId
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
     }
-    
 }

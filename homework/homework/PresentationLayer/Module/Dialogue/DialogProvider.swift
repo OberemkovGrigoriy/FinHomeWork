@@ -47,21 +47,26 @@ extension ConversationDataProvider: NSFetchedResultsControllerDelegate{
         switch type {
         case .delete:
             if let indexPath = indexPath {
+                print("delete in newIndexPath")
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         case .insert:
             if let newIndexPath = newIndexPath {
+                print("insert in newIndexPath")
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         case .move:
             if let indexPath = indexPath {
+                print("move in newIndexPath")
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
             if let newIndexPath = newIndexPath {
+                print("move in newIndexPath")
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         case .update:
             if let indexPath = indexPath {
+                print("update in newIndexPath")
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }

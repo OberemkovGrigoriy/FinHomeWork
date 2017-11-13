@@ -24,10 +24,13 @@ class StorageManager: StorageProtocol  {
     func save(object: ProfileDataToSave, closure: @escaping () -> ()){
         if let context = coreDataStack.saveContext {
             let appUser = AppUser.findOrInserAppUser(in: context)
-            appUser?.name = object.profileName
+            let user = User.findOrInsertUser(with: UIDevice.current.name, in: context)
+            user?.isOnline = true
+            user?.name = object.profileName
+            appUser?.currentUser = user
             appUser?.aboutText = object.profileAbout
+            appUser?.name = object.profileName
             appUser?.avatar = object.profileImage
-            
             coreDataStack.performSave(context: context, completionHandler: nil)
             closure()
         }
@@ -58,25 +61,40 @@ class StorageManager: StorageProtocol  {
     
     
     func recieveMessage(text: String, fromUser: String,toUser:String){
-        if let context = coreDataStack.saveContext {
-            let message = Message.insertMessage(text: text, recieverId: toUser, senderId: fromUser, in: context)
-            message?.isUnread = true
-            let conversation = Conversation.findOrInsertConversation(with: String.generateConversationId(id1: fromUser, id2: toUser), in: context)
-            conversation?.lastMessage = message
-            coreDataStack.performSave(context: context, completionHandler: nil)
+        if(fromUser != UIDevice.current.name){
+            if let context = coreDataStack.saveContext {
+                let message = Message.insertMessage(text: text, recieverId: UIDevice.current.name, senderId: fromUser, in: context)
+                message?.isUnread = true
+                let conversation = Conversation.findOrInsertConversation(with: String.generateConversationId(id1: fromUser, id2: UIDevice.current.name), in: context)
+                print("RECIEVE message")
+                print(conversation?.conversationId)
+                conversation?.lastMessage = message
+                print("MessageMessage")
+                print(conversation?.lastMessage)
+                coreDataStack.performSave(context: context, completionHandler: nil)
+            }
+        }
+        if(fromUser == UIDevice.current.name){
+            if let context = coreDataStack.saveContext {
+                let message = Message.insertMessage(text: text, recieverId: toUser, senderId: fromUser, in: context)
+                message?.isUnread = true
+                print("RECIEVE message")
+                coreDataStack.performSave(context: context, completionHandler: nil)
+            }
         }
     }
+    
     func didFoundUser(userID:String,userName:String?){
         if let context = coreDataStack.saveContext {
             let user = User.findOrInsertUser(with: userID, in: context)
             user?.name = userName
             user?.isOnline = true
-            // probably add save before
             let conversation = Conversation.findOrInsertConversation(with: String.generateConversationId(id1: userID, id2: UIDevice.current.name), in: context)
             let me = User.findOrInsertUser(with: UIDevice.current.name, in: context) // check then on AppUser
             conversation?.addToParticipants(user!)
             conversation?.addToParticipants(me!)
             conversation?.isOnline = true
+            print("DID FOUND!!!")
             print (conversation?.conversationId)
             coreDataStack.performSave(context: context, completionHandler: nil)
         }
@@ -90,7 +108,6 @@ class StorageManager: StorageProtocol  {
             conversation?.isOnline = false
             coreDataStack.performSave(context: context, completionHandler: nil)
         }
-        
+
     }
-    
 }

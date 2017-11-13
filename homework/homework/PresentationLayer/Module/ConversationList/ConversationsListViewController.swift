@@ -12,23 +12,23 @@ import Foundation
 import CoreData
 
 class ConversationsListViewController: UIViewController,UITableViewDataSource{
-    
-    let comManager = CommunicationManager()
-    var conversModel: ConversationModel?
+    var comManager:CommunicationManager?
+    let storageManager = StorageManager()
     var fetchedResultsController: NSFetchedResultsController<Conversation>?
     var provider : ListDataProvider?
-
-    
-    @IBOutlet var dialoguesTable: UITableView!
+    @IBOutlet weak var dialoguesTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         dialoguesTable.dataSource = self
-        conversModel = ConversationModel(controller: self)
-        comManager.controller = conversModel
+        //print(Communicator.sharedInstance)
+        comManager = CommunicationManager(manager: storageManager)
         provider = ListDataProvider(tableView: dialoguesTable)
         fetchedResultsController = provider?.fetchedResultsController
+        //dialoguesTable.delegate = self
+        // Do any additional setup after loading the view.
     }
     // MARK: - Navigation
+    
     override func viewWillAppear(_ animated: Bool) {
         do {
             try self.fetchedResultsController?.performFetch()
@@ -44,15 +44,16 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource{
                 if let dest = segue.destination as? DialogueViewController{
                     dest.userID = cell.userID
                     dest.comManager = comManager
-                    comManager.chatController = dest
-                    cell.hasUnreadedMessages = false
-                    if let msg = cell.message{
-                        dest.messages.append((msg,true))
-                    }
+                    dest.conversationId = cell.conversationId
+                    //cell.hasUnreadedMessages = false
                 }
+                
                 segue.destination.navigationItem.title = cell.name
             }
         }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
     }
     
     // MARK: - UITableViewDelegate
@@ -61,32 +62,40 @@ class ConversationsListViewController: UIViewController,UITableViewDataSource{
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
+        guard let frc = fetchedResultsController, let sectionsCount =
+            frc.sections?.count else {
+                return 0 }
+        return sectionsCount
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // в будущем считать элементы массива
-            return conversModel!.dialoges.count
+        guard let frc = fetchedResultsController, let sections = frc.sections else {
+            return 0 }
+        return sections[section].numberOfObjects
     }
+    
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Online"
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        conversModel?.dialoges.sort(by: {$0.date! > $1.date!})
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         if let cell = cell as? TableViewCell{
-            if(conversModel?.dialoges[indexPath.row] != nil){
-                cell.configurate(data: (conversModel?.dialoges[indexPath.row])!)
-                return cell
+            if let info = fetchedResultsController?.object(at: indexPath) {
+                cell.configurate(data:info)
             }
+            return cell
         }
         return cell
     }
     
-    func setup(){
-        DispatchQueue.main.async {
-            self.dialoguesTable.reloadData()
-        }
+    // MARK: - MessageReciever
+    
+    func showAlert(error:Error){
+        let alert = UIAlertController(title: error.localizedDescription, message:nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ок", style: .default) { action in
+        })
+        self.present(alert,animated: true)
     }
     
 }

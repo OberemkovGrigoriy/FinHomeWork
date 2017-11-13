@@ -46,12 +46,6 @@ extension User {
         
     }
     
-    
-    
-    
-    
-    
-    
     static func fetchRequestUser(with Id:String, model: NSManagedObjectModel) -> NSFetchRequest<User>? {
         let templateName = "UserId"
         
@@ -77,7 +71,6 @@ extension User {
         
     }
     
-    
-    
+
 }
 

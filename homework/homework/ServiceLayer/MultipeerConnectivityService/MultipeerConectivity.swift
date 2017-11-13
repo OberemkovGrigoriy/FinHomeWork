@@ -24,54 +24,40 @@ protocol MessageReciever: class{
 }
 
 class CommunicationManager: CommunicatorDelegate{
-    weak var controller: MessageReciever?
-    weak var chatController: MessageReciever?
     let communicator = Communicator()
+    let storageManager:StorageProtocol?
     
-    init(){
+    init(manager:StorageProtocol){
+        storageManager = manager
         communicator.delegate = self
     }
     // Discovering
     
-
     func sendMessage(string:String,to userID:String,completionHandler: ((_ success: Bool,_ error: Error?)->())?){
+        storageManager?.recieveMessage(text: string, fromUser: UIDevice.current.name, toUser: userID)
         communicator.sendMessage(string: string, to: userID
             , completionHandler: completionHandler)
     }
     
     func didFoundUser(userID:String,userName:String?){
-        controller?.addUser(userID: userID, userName: userName)
-        chatController?.addUser(userID: userID, userName: userName)
-        // add to chat
-        
+        storageManager?.didFoundUser(userID: userID, userName: userName)
     }
     func didLostUser(userID:String){
-        controller?.deleteUser(userID: userID)
-        chatController?.deleteUser(userID: userID)
+        storageManager?.didLostUser(userID: userID)
         
     }
     
     //errors
     func failedToStartBrowsingForUsers(error: Error){
-        controller?.showAlert(error: error)
-        chatController?.showAlert(error: error)
-        
+
     }
     func failedToStartAdvertising(error: Error){
-        controller?.showAlert(error: error)
-        chatController?.showAlert(error: error)
-        
+   
     }
     
     //messages
     func didReceiveMessage(text: String, fromUser: String,toUser: String){
-        let showed = chatController?.recieveMessage(text: text, fromUser: fromUser,read:false)
-        if let showed = showed{
-            controller?.recieveMessage(text: text, fromUser: fromUser,read:showed)
-        }
-        else{
-            controller?.recieveMessage(text: text, fromUser: fromUser,read:false)
-        }
+        storageManager?.recieveMessage(text: text, fromUser: fromUser, toUser: toUser)
     }
     
 }
