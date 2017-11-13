@@ -66,11 +66,8 @@ class StorageManager: StorageProtocol  {
                 let message = Message.insertMessage(text: text, recieverId: UIDevice.current.name, senderId: fromUser, in: context)
                 message?.isUnread = true
                 let conversation = Conversation.findOrInsertConversation(with: String.generateConversationId(id1: fromUser, id2: UIDevice.current.name), in: context)
-                print("RECIEVE message")
-                print(conversation?.conversationId)
                 conversation?.lastMessage = message
-                print("MessageMessage")
-                print(conversation?.lastMessage)
+ 
                 coreDataStack.performSave(context: context, completionHandler: nil)
             }
         }
@@ -94,8 +91,6 @@ class StorageManager: StorageProtocol  {
             conversation?.addToParticipants(user!)
             conversation?.addToParticipants(me!)
             conversation?.isOnline = true
-            print("DID FOUND!!!")
-            print (conversation?.conversationId)
             coreDataStack.performSave(context: context, completionHandler: nil)
         }
         

@@ -98,14 +98,12 @@ class TableViewCell: UITableViewCell {
         else {
             opponent = participants.first
         }
-        print ("Configurate")
-        print(opponent?.name)
         let lastMessage = data.lastMessage
         name = opponent?.name
         date = lastMessage?.date as Date?
         online = data.isOnline
         message = lastMessage?.text
-        print(lastMessage?.isUnread)
+      
         if let cond = lastMessage?.isUnread{
             hasUnreadedMessages = cond // time decision
         }

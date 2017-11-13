@@ -114,14 +114,11 @@ class DialogueViewController: UIViewController,UITableViewDataSource,UITextField
         if let message = fetchedResultsController?.object(at: indexPath) {
             if message.reciever?.userId == UIDevice.current.name {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "firstId", for: indexPath) as! MessageViewCell
-                print("I CONFIGURATE FIRSTID CELL")
                 cell.configurate(with: message)
                 return cell
             }
             else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "secondId", for: indexPath) as! MessageViewCell
-                
-                print("I CONFIGURATE secondID CELL")
                 cell.configurate(with: message)
                 return cell
                 
