@@ -56,6 +56,13 @@ class ProfileViewController: UIViewController,  UIImagePickerControllerDelegate,
             self.present(imagePickerController, animated: true, completion:nil)
         }))
         
+        actionSheet.addAction(UIAlertAction(title: "Загрузить изобржанеие", style: .default) { action in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "imageController") as! ImagesController
+            vc.imageViewToChange = self.profileImage
+            self.present(vc, animated: true, completion: nil)
+        })
+        
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(actionSheet, animated: true, completion: nil)

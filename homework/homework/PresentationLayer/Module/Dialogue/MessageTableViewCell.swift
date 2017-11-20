@@ -29,12 +29,12 @@ class MessageViewCell: UITableViewCell {
         msgText = text
     }
 
-    func configurate(with msg:Message){
+    func configurate(with msg: Message){
         print("configurate with MSG::::::::")
         msgText = msg.text
         messageLabel.layer.masksToBounds = true
-        messageLabel.layer.cornerRadius = 10
-        if msg.reciever?.userId! == UIDevice.current.name { 
+        messageLabel.layer.cornerRadius = 3
+        if msg.reciever?.userId! == UIDevice.current.name { /// CHange!!!
             messageLabel.backgroundColor = UIColor(red: 100/255, green: 86/255, blue: 143/255, alpha: 0.2)
         }
         else{

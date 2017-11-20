@@ -201,6 +201,69 @@
             </objects>
             <point key="canvasLocation" x="2320.8000000000002" y="-138.0809595202399"/>
         </scene>
+        <!--Images Controller-->
+        <scene sceneID="Fpn-vS-Sqq">
+            <objects>
+                <viewController restorationIdentifier="imageController" storyboardIdentifier="imageController" id="TOh-Er-JvK" customClass="ImagesController" customModule="homework" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ffk-zz-nbY"/>
+                        <viewControllerLayoutGuide type="bottom" id="hoS-35-dfN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EX3-dU-e3I">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tXS-DV-lbS">
+                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="f7D-py-aA7">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="VP9-NE-UHN">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="647"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="Cell" reuseIdentifier="Cell" id="xZb-Dv-s6F" customClass="ImageCollectionViewCell" customModule="homework" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YQn-JT-TPu">
+                                                    <rect key="frame" x="-95" y="-39" width="240" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="mainView" destination="YQn-JT-TPu" id="AkO-cJ-cuL"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tXS-DV-lbS" firstAttribute="top" secondItem="ffk-zz-nbY" secondAttribute="bottom" id="4ev-WT-zb2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tXS-DV-lbS" secondAttribute="trailing" id="6L5-Jt-TDQ"/>
+                            <constraint firstItem="tXS-DV-lbS" firstAttribute="leading" secondItem="EX3-dU-e3I" secondAttribute="leadingMargin" id="Bro-nu-yN9"/>
+                            <constraint firstItem="hoS-35-dfN" firstAttribute="top" secondItem="tXS-DV-lbS" secondAttribute="bottom" id="P3D-fa-KAY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="VP9-NE-UHN" id="9Po-4n-EEH"/>
+                        <outlet property="collectionView" destination="tXS-DV-lbS" id="x6l-ZW-lms"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uzh-01-Xrq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3143" y="-164"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="QYD-xx-rdQ">
             <objects>

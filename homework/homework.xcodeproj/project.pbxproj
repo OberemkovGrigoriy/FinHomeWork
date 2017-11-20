@@ -27,6 +27,11 @@
 		BB19CB941FB74373000FED3D /* UserCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB19CB931FB74373000FED3D /* UserCore.swift */; };
 		BB19CB961FB7439E000FED3D /* CoreConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB19CB951FB7439E000FED3D /* CoreConversation.swift */; };
 		BB2E068F1F9BCAD500A14B6F /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E068E1F9BCAD400A14B6F /* CellData.swift */; };
+		BB9966921FC1BEF10002DA6D /* ImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9966911FC1BEF10002DA6D /* ImagesController.swift */; };
+		BB9966941FC1BF3F0002DA6D /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9966931FC1BF3F0002DA6D /* ImageCollectionViewCell.swift */; };
+		BB9966961FC1BF920002DA6D /* LinksDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9966951FC1BF920002DA6D /* LinksDownloader.swift */; };
+		BB9966981FC1BFBC0002DA6D /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9966971FC1BFBC0002DA6D /* RequestSender.swift */; };
+		BB9966FA1FC1C87C0002DA6D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9966F91FC1C87C0002DA6D /* SwiftyJSON.swift */; };
 		BBA9AD721F77C8DC009F8FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9AD711F77C8DC009F8FF0 /* AppDelegate.swift */; };
 		BBA9AD741F77C8DC009F8FF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9AD731F77C8DC009F8FF0 /* ViewController.swift */; };
 		BBA9AD791F77C8DC009F8FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA9AD781F77C8DC009F8FF0 /* Assets.xcassets */; };
@@ -54,6 +59,11 @@
 		BB19CB931FB74373000FED3D /* UserCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCore.swift; sourceTree = "<group>"; };
 		BB19CB951FB7439E000FED3D /* CoreConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreConversation.swift; sourceTree = "<group>"; };
 		BB2E068E1F9BCAD400A14B6F /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		BB9966911FC1BEF10002DA6D /* ImagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesController.swift; sourceTree = "<group>"; };
+		BB9966931FC1BF3F0002DA6D /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		BB9966951FC1BF920002DA6D /* LinksDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDownloader.swift; sourceTree = "<group>"; };
+		BB9966971FC1BFBC0002DA6D /* RequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
+		BB9966F91FC1C87C0002DA6D /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../Downloads/SwiftyJSON-master-2/Source/SwiftyJSON.swift"; sourceTree = "<group>"; };
 		BBA9AD6E1F77C8DC009F8FF0 /* homework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA9AD711F77C8DC009F8FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBA9AD731F77C8DC009F8FF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +89,11 @@
 			isa = PBXGroup;
 			children = (
 				BB0C444F1F92488900EC0FB7 /* ProfileDataToSave.swift */,
+				BB9966951FC1BF920002DA6D /* LinksDownloader.swift */,
 				BB0C43F61F8E2AE300EC0FB7 /* ProfileViewController.swift */,
+				BB9966911FC1BEF10002DA6D /* ImagesController.swift */,
+				BB9966971FC1BFBC0002DA6D /* RequestSender.swift */,
+				BB9966931FC1BF3F0002DA6D /* ImageCollectionViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -172,11 +186,19 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
+		BB99669C1FC1C2620002DA6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BBA9AD651F77C8DC009F8FF0 = {
 			isa = PBXGroup;
 			children = (
 				BBA9AD701F77C8DC009F8FF0 /* homework */,
 				BBA9AD6F1F77C8DC009F8FF0 /* Products */,
+				BB99669C1FC1C2620002DA6D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,6 +213,7 @@
 		BBA9AD701F77C8DC009F8FF0 /* homework */ = {
 			isa = PBXGroup;
 			children = (
+				BB9966F91FC1C87C0002DA6D /* SwiftyJSON.swift */,
 				BB12ABE71FA607C60025059B /* CoreLayer */,
 				BB12ABE91FA608220025059B /* ServiceLayer */,
 				BB12ABE81FA608140025059B /* PresentationLayer */,
@@ -236,6 +259,7 @@
 				TargetAttributes = {
 					BBA9AD6D1F77C8DC009F8FF0 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = KJ28DR5WWZ;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -278,22 +302,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB16903C1F8AA97D00E5E227 /* DialogueViewController.swift in Sources */,
+				BB9966921FC1BEF10002DA6D /* ImagesController.swift in Sources */,
 				BB19CB941FB74373000FED3D /* UserCore.swift in Sources */,
 				BB1582541FAE229400E68F3E /* TinkoffHomework.xcdatamodeld in Sources */,
 				BB0C444C1F9246ED00EC0FB7 /* GCDDataManager.swift in Sources */,
 				BB1582561FAE235500E68F3E /* Stack.swift in Sources */,
 				BBA9AD741F77C8DC009F8FF0 /* ViewController.swift in Sources */,
 				BB16902B1F8A6C3500E5E227 /* TableViewCell.swift in Sources */,
+				BB9966981FC1BFBC0002DA6D /* RequestSender.swift in Sources */,
 				BB19CB961FB7439E000FED3D /* CoreConversation.swift in Sources */,
 				BB11FE1E1F8AAEA4009DE922 /* MessageTableViewCell.swift in Sources */,
 				BB145B901FB79DF00096C77D /* DialogProvider.swift in Sources */,
 				BB19CB921FB73817000FED3D /* CoreMessage.swift in Sources */,
+				BB9966961FC1BF920002DA6D /* LinksDownloader.swift in Sources */,
 				BB1582581FAE382B00E68F3E /* AppUserCore.swift in Sources */,
+				BB9966FA1FC1C87C0002DA6D /* SwiftyJSON.swift in Sources */,
 				BB2E068F1F9BCAD500A14B6F /* CellData.swift in Sources */,
 				BB15825A1FAE457700E68F3E /* StorageManager.swift in Sources */,
 				BB145B931FB7A1700096C77D /* ConversProvider.swift in Sources */,
 				BB0C44501F92488900EC0FB7 /* ProfileDataToSave.swift in Sources */,
 				BB0C43F71F8E2AE300EC0FB7 /* ProfileViewController.swift in Sources */,
+				BB9966941FC1BF3F0002DA6D /* ImageCollectionViewCell.swift in Sources */,
 				BBA9AD721F77C8DC009F8FF0 /* AppDelegate.swift in Sources */,
 				BB1690291F8A6A2000E5E227 /* ConversationsListViewController.swift in Sources */,
 				BB171CCD1F97BCA700AEE347 /* Communicator.swift in Sources */,
@@ -435,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KJ28DR5WWZ;
 				INFOPLIST_FILE = homework/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tb.homework;
@@ -448,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KJ28DR5WWZ;
 				INFOPLIST_FILE = homework/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tb.homework;
